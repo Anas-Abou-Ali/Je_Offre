@@ -29,16 +29,21 @@ public class Offers extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         List<Offre> offers = null;
-        if( request.getParameter("category") != null )
-            offers = this.offers.getOffres( Category.values()[ Integer.parseInt( request.getParameter("category") ) ] );
-        if( request.getParameter("city") != null )
-            offers = this.offers.getOffres( City.values()[ Integer.parseInt( request.getParameter("city") ) ] );
-        if( request.getParameter("search") != null && request.getParameter("search").trim().length() != 0)
-            offers = this.offers.searchOffers( request.getParameter("search") );
+        String byCategory = request.getParameter("category");
+        String byCity = request.getParameter("city");
+        String bySearch = request.getParameter("search");
+
+        if( byCategory != null && byCategory.trim().length() != 0 )
+            offers = this.offers.getOffres( Category.values()[ Integer.parseInt( byCategory ) ] );
+
+        if( byCity != null && byCity.trim().length() != 0 )
+            offers = this.offers.getOffres( City.values()[ Integer.parseInt( byCity ) ] );
+
+        if( bySearch != null && bySearch.trim().length() != 0)
+            offers = this.offers.searchOffers( bySearch );
+
         if(offers == null || offers.isEmpty())
             offers = this.offers.getOffres( City.ALL );
-
-
 
 
         request.setAttribute(ATT_OFFERS, offers);

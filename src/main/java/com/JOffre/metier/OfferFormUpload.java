@@ -11,12 +11,10 @@ import java.util.Random;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
-import com.JOffre.Model.Category;
-import com.JOffre.Model.City;
-import com.JOffre.Model.Image;
-import com.JOffre.Model.Offre;
+import com.JOffre.Model.*;
 
 public class OfferFormUpload {
     private static final String FIELD_DESCRIPTION = "description";
@@ -24,6 +22,9 @@ public class OfferFormUpload {
     private static final String FIELD_CITY        = "city";
     private static final String FIELD_CATEGORY    = "category";
     private static final String FIELD_FILE        = "file";
+    private static final String FIELD_USER        = "user";
+    private static final String ATT_SESSION_USER  = "user";
+
     //still need to handle userId
 
     public static final int BUFFER_SIZE           = 10240; // 10 ko
@@ -51,6 +52,8 @@ public class OfferFormUpload {
         //getting the inputs of non file fields
         String description = getFieldValue( request, FIELD_DESCRIPTION );
         String title       = getFieldValue( request, FIELD_TITLE );
+        User user = (User) request.getSession().getAttribute( ATT_SESSION_USER );
+
         //String c = getFieldValue( request, FIELD_CATEGORY ),cc =getFieldValue( request, FIELD_CITY );
 
         /*
@@ -110,8 +113,19 @@ public class OfferFormUpload {
             } catch ( Exception e ) {
                 setError( FIELD_TITLE, e.getMessage() );
             }
+
+            try{
+                if(user == null){
+                    throw new Exception( "authentication error" );
+                }
+            } catch ( Exception e ) {
+                setError( FIELD_USER, e.getMessage() );
+            }
+
+
             offer.setDescription( description );
             offer.setTitre(title);
+            offer.setIdUser( user.getIdUser() );
 
 
 
@@ -120,8 +134,9 @@ public class OfferFormUpload {
 //            } catch ( Exception e ) {
 //                setError( FIELD_FILE, e.getMessage() );
 //            }
+
             if(fileContent != null)
-            image.setPathToImage( random_java8_string(RANDOM_FILENAME_LEN)+fileName);
+            image.setPathToImage( random_java8_string(RANDOM_FILENAME_LEN) + fileName);
         }
         //if no error lets now store our file in the hard disk
         if ( errors.isEmpty() && fileContent != null) {

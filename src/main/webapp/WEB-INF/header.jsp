@@ -23,13 +23,13 @@
                 </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link disabled" href="#">Disabled</a>
+                <a href="upload" class="btn btn-primary">    Publier un offre    </a>
             </li>
         </ul>
 
         <c:choose>
             <c:when test="${ !empty sessionScope.user}">
-                <c:out value="${sessionScope.user.firstName}"></c:out>
+                    <c:out value="${sessionScope.user.firstName}"></c:out>
             </c:when>
             <c:otherwise>
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#connexion" >Se connecter</button>

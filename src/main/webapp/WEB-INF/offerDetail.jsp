@@ -11,60 +11,26 @@
 <body>
 <%@ include file="header.jsp" %>
 
-
-
-
 <p>
-    ${oneOffer}
-
+    ${offer.titre}
 </p>
 
 
+<button id="addClass" class="btn btn-primary">
+    <i class="fa fa-commenting fa-lg" aria-hidden="true"></i>
+</button>
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<a href="#" id="addClass"> Open chat now </a>
-
-
-
-<div class="popup-box chat-popup" id="qnimate">
+<div class="popup-box chat-popup" id="chat">
     <div class="popup-head">
-        <div class="popup-head-left pull-left"><img src="http://bootsnipp.com/img/avatars/bcf1c0d13e5500875fdd5a7e8ad9752ee16e7462.jpg" alt="iamgurdeeposahan"> Gurdeep Osahan</div>
+        <div class="popup-head-left pull-left"><c:out value="${offer.userFirstName}" /> </div>
         <div class="popup-head-right pull-right">
-            <div class="btn-group">
-                <button class="chat-header-button" data-toggle="dropdown" type="button" aria-expanded="false">
-                    <i class="glyphicon glyphicon-cog"></i> </button>
-                <ul role="menu" class="dropdown-menu pull-right">
-                    <li><a href="#">Media</a></li>
-                    <li><a href="#">Block</a></li>
-                    <li><a href="#">Clear Chat</a></li>
-                    <li><a href="#">Email Chat</a></li>
-                </ul>
-            </div>
-
-            <button data-widget="remove" id="removeClass" class="chat-header-button pull-right" type="button"><i class="glyphicon glyphicon-off"></i></button>
+            <button data-widget="remove" id="removeClass" class="chat-header-button pull-right" type="button"><i class="fa fa-times" aria-hidden="true"></i></button>
         </div>
     </div>
     <div class="popup-messages">
-
-
-
 
         <div class="direct-chat-messages">
 
@@ -121,34 +87,15 @@
                     <img alt="iamgurdeeposahan" src="http://bootsnipp.com/img/avatars/bcf1c0d13e5500875fdd5a7e8ad9752ee16e7462.jpg" class="direct-chat-img big-round">
                     <span class="direct-chat-reply-name">Singh</span>
                 </div>
-                <!-- /.direct-chat-text -->
             </div>
-            <!-- /.direct-chat-msg -->
-
-
-
-
-
-
         </div>
-
-
-
-
-
-
-
-
-
     </div>
     <div class="popup-messages-footer">
-        <textarea id="status_message" placeholder="Type a message..." rows="10" cols="40" name="message"></textarea>
-        <div class="btn-footer">
-            <button class="bg_none"><i class="glyphicon glyphicon-film"></i> </button>
-            <button class="bg_none"><i class="glyphicon glyphicon-camera"></i> </button>
-            <button class="bg_none"><i class="glyphicon glyphicon-paperclip"></i> </button>
-            <button class="bg_none pull-right"><i class="glyphicon glyphicon-thumbs-up"></i> </button>
-        </div>
+        <form action="offer?off=${offer.offerId}" method="POST">
+            <input name="idUser" id="idUser" type="hidden" value="${offer.idUser}"/>
+            <textarea id="status_message" placeholder="message..." rows="10" cols="40" name="message"></textarea>
+            <button class="btn btn-primary" type="submit"><i class="fa fa-paper-plane fa-sm"></i> </button>
+        </form>
     </div>
 </div>
 

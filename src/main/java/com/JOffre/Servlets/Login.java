@@ -47,8 +47,6 @@ public class Login extends HttpServlet {
             session.setAttribute(ATT_SESSION_USER, user);
         }
 
-
-
         response.sendRedirect( request.getContextPath() + VIEW );
     }
 

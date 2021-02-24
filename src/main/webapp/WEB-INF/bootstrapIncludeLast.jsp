@@ -12,11 +12,11 @@
 
     $(function(){
         $("#addClass").click(function () {
-            $('#qnimate').addClass('popup-box-on');
+            $('#chat').addClass('popup-box-on');
         });
 
         $("#removeClass").click(function () {
-            $('#qnimate').removeClass('popup-box-on');
+            $('#chat').removeClass('popup-box-on');
         });
     })
 </script>

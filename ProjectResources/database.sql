@@ -35,7 +35,7 @@ create table Messages
    sender_id_user       varchar(254) not null,
    idUser               varchar(254) not null,
    id_message           bigint not null AUTO_INCREMENT,
-   dateMessage          timestamp,
+   dateMessage          timestamp DEFAULT CURRENT_TIMESTAMP,
    message              text,
    primary key (id_message)
 );
