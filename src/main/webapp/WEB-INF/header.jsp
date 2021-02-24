@@ -23,7 +23,7 @@
                 </div>
             </li>
             <li class="nav-item">
-                <a href="upload" class="btn btn-primary">    Publier un offre    </a>
+                <a href="upload" class="btn btn-primary">     Publier un offre    </a>
             </li>
         </ul>
 
