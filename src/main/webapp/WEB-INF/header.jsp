@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#"> <img src="logo_don.jpg" class="rounded-circle" width="30" height="30" class="d-inline-block align-top" alt="Logo">J'offre.ma</a>
+    <a class="navbar-brand" href="index.jsp"> <img src="logo_don.jpg" class="rounded-circle" width="30" height="30" class="d-inline-block align-top" alt="Logo">J'offre.ma</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -26,7 +26,15 @@
                 <a class="nav-link disabled" href="#">Disabled</a>
             </li>
         </ul>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#connexion" >Se connecter</button>
+
+        <c:choose>
+            <c:when test="${ !empty sessionScope.user}">
+                <c:out value="${sessionScope.user.firstName}"></c:out>
+            </c:when>
+            <c:otherwise>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#connexion" >Se connecter</button>
+            </c:otherwise>
+        </c:choose>
     </div>
 </nav>
 
@@ -35,7 +43,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Authentification</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -47,7 +55,7 @@
                     <div class="fb-login-button" data-width="" data-size="large" data-button-type="login_with" data-layout="default"
                          data-auto-logout-link="false" data-use-continue-as="true" onLogin="checkLoginState()"></div>
                          <p> Bonjour <span id="name"></span> </p>
-                <form method="POST" action="offers">
+                <form method="POST" action="login">
                     <input type="hidden" id="username" name="username"  />
                     <input type="hidden" id="idUser" name="idUser"  />
                     <button type="submit button" class="btn btn-primary">Continuer...</button>

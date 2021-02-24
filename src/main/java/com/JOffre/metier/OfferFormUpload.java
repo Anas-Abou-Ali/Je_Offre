@@ -27,7 +27,7 @@ public class OfferFormUpload {
     //still need to handle userId
 
     public static final int BUFFER_SIZE           = 10240; // 10 ko
-    public static final int RANDOM_FILENAME_LEN   = 30;
+    public static final int RANDOM_FILENAME_LEN   = 13;
     private String              result;
     private Map<String, String> errors            = new HashMap<String, String>();
 
@@ -120,10 +120,11 @@ public class OfferFormUpload {
 //            } catch ( Exception e ) {
 //                setError( FIELD_FILE, e.getMessage() );
 //            }
-            image.setPathToImage( fileName );
+            if(fileContent != null)
+            image.setPathToImage( random_java8_string(RANDOM_FILENAME_LEN)+fileName);
         }
         //if no error lets now store our file in the hard disk
-        if ( errors.isEmpty() ) {
+        if ( errors.isEmpty() && fileContent != null) {
             try {
                 store_file( fileContent, fileName, path );
             } catch ( Exception e ) {
@@ -211,7 +212,7 @@ public class OfferFormUpload {
             //open the streams
             in = new BufferedInputStream( fileContent, BUFFER_SIZE );
 
-            out = new BufferedOutputStream( new FileOutputStream( new File( path + random_java8_string(RANDOM_FILENAME_LEN) ) ), BUFFER_SIZE );
+            out = new BufferedOutputStream( new FileOutputStream( new File( path + image.getPathToImage() ) ), BUFFER_SIZE );
 
             byte[] buffer = new byte[BUFFER_SIZE];
             int length;

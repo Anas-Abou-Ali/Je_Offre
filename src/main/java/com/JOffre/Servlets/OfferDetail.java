@@ -1,5 +1,6 @@
 package com.JOffre.Servlets;
 
+import com.JOffre.Model.Offre;
 import com.JOffre.dao.DaoFactory;
 import com.JOffre.dao.IOffreDao;
 
@@ -11,7 +12,8 @@ import java.io.IOException;
 @WebServlet(value = "/offer")
 public class OfferDetail extends HttpServlet {
     private static final String ATT_DAO_FACTORY = "daofactory";
-    private static final String ATT_OFFERS      = "offers";
+    private static final String ATT_OFFER       = "offer";
+    private static final String GET_OFFER       = "off";
     private static final String VIEW            = "/WEB-INF/offerDetail.jsp";
     private IOffreDao offers                    = null;
 
@@ -22,8 +24,11 @@ public class OfferDetail extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        this.getServletContext().getRequestDispatcher( VIEW ).forward( request, response );
+        Offre offer = this.offers.get( Long.parseLong( request.getParameter(GET_OFFER) ) );
 
+        request.setAttribute(ATT_OFFER, offer);
+
+        this.getServletContext().getRequestDispatcher( VIEW ).forward( request, response );
     }
 
     @Override

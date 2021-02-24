@@ -3,9 +3,10 @@
 <head>
     <meta charset="utf-8" />
     <title>Title</title>
-
+    <%@ include file="bootstrapIncludes.jsp" %>
 </head>
 <body>
+<%@ include file="header.jsp" %>
 
 <form action="<c:url value="/upload" />" method="post" enctype="multipart/form-data">
         <fieldset>
@@ -17,7 +18,8 @@
             <br />
 
             <label for="description">Description d'offre</label>
-            <input type="text" id="description" name="description" value="<c:out value="${offer.description}" />" />
+            <textarea type="text" id="description" name="description" value="<c:out value="${offer.description}" />" >
+            </textarea>
             <span class="erreur">${form.errors['description']}</span>
             <br />
 
@@ -50,6 +52,11 @@
 </form>
 
 
+
+<%@ include file="bootstrapIncludeLast.jsp" %>
+<div>
+    <%@ include file="footer.jsp" %>
+</div>
 
 </body>
 </html>

@@ -9,12 +9,20 @@
     <body>
         <%@ include file="header.jsp" %>
 
+
         <c:forEach var="offer" items="${offers}" varStatus="status">
-            <c:out value="${offer.titre} ${  status.count }"/>
+            <a href="offer?off=${offer.offerId}">
+                <c:out value="${offer.titre} ${  status.count }"/>
+            </a>
         </c:forEach>
 
 
 
+
         <%@ include file="bootstrapIncludeLast.jsp" %>
+        <div>
+            <%@ include file="footer.jsp" %>
+        </div>
+
     </body>
 </html>

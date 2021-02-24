@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import static com.JOffre.daoUtil.Util.*;
 
 public class UserDaoImpl implements IUserDao{
-    private static final String SQL_INSERT = "INSERT INTO user(idUser, firstName, lastName) VALUES(?,?,?)";
+    private static final String SQL_INSERT = "INSERT INTO user(idUser, firstName) VALUES(?,?)";
     private static final String SQL_SELECT = "SELECT idUser, firstName, lastName from user where idUser = ? ";
     private static final String SQL_UPDATE = "UPDATE user SET  firstName = ?, lastName = ? where idUser = ? ";
     private static final String SQL_DELETE = "DELETE FROM user WHERE idUser = ? ";
@@ -27,7 +27,7 @@ public class UserDaoImpl implements IUserDao{
         ResultSet generatedValues = null;
         try {
             connection = daoFactory.getConnection();
-            preparedStatement = initPreparedStatement( connection, SQL_INSERT, true, user.getIdUser(), user.getFirstName(), user.getLastName() );
+            preparedStatement = initPreparedStatement( connection, SQL_INSERT, true, user.getIdUser(), user.getFirstName() );
 
             int status = preparedStatement.executeUpdate();
             if ( status == 0 ) {
@@ -37,7 +37,7 @@ public class UserDaoImpl implements IUserDao{
             //recuperation de l'id
             generatedValues = preparedStatement.getGeneratedKeys();
             if ( generatedValues.next() ) {
-                user.setIdUser( generatedValues.getString( 1 ) );
+                user.setIdUser( generatedValues.getString( "idUser" ) );
             } else {
                 throw new DaoException("failed to create a user");
             }

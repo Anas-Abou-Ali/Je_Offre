@@ -1,5 +1,6 @@
 package com.JOffre.Servlets;
 
+import com.JOffre.Model.Category;
 import com.JOffre.Model.City;
 import com.JOffre.Model.Offre;
 import com.JOffre.dao.DaoFactory;
@@ -26,7 +27,19 @@ public class Offers extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<Offre> offers = this.offers.getOffres(City.ALL);
+
+        List<Offre> offers = null;
+        if( request.getParameter("category") != null )
+            offers = this.offers.getOffres( Category.values()[ Integer.parseInt( request.getParameter("category") ) ] );
+        if( request.getParameter("city") != null )
+            offers = this.offers.getOffres( City.values()[ Integer.parseInt( request.getParameter("city") ) ] );
+        if( request.getParameter("search") != null && request.getParameter("search").trim().length() != 0)
+            offers = this.offers.searchOffers( request.getParameter("search") );
+        if(offers == null || offers.isEmpty())
+            offers = this.offers.getOffres( City.ALL );
+
+
+
 
         request.setAttribute(ATT_OFFERS, offers);
         this.getServletContext().getRequestDispatcher( VIEW ).forward( request, response );

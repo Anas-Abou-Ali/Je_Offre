@@ -8,6 +8,4 @@ public enum Category {
     TOOLS,
     SPORT,
     OTHERS
-
-
 }

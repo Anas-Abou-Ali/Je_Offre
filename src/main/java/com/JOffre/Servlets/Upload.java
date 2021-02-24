@@ -22,6 +22,7 @@ import java.util.List;
 public class Upload extends HttpServlet {
 
     private static final String VIEW              = "/WEB-INF/upload.jsp";
+    private static final String VIEW_RETURN       = "/index.jsp";
 
     private static final String ATT_DAO_FACTORY   = "daofactory";
 
@@ -69,14 +70,15 @@ public class Upload extends HttpServlet {
         image.setOfferId( offer.getOfferId() );
         this.imageDao.create(image);
 
-        request.setAttribute("form", offerFormUploader);
-        request.setAttribute("offer", offer);
-        request.setAttribute("City", City.values());
-        request.setAttribute("Category", Category.values());
-
-        //the jsp can access the errors with form.errors["file"]
-
-        this.getServletContext().getRequestDispatcher( VIEW ).forward( request, response );
+        if( offerFormUploader.getErrors().isEmpty() ){
+            response.sendRedirect( request.getContextPath() + VIEW_RETURN );
+        }else{
+            request.setAttribute("form", offerFormUploader);
+            request.setAttribute("offer", offer);
+            request.setAttribute("City", City.values());
+            request.setAttribute("Category", Category.values());
+            this.getServletContext().getRequestDispatcher( VIEW ).forward( request, response );
+        }
     }
 
 

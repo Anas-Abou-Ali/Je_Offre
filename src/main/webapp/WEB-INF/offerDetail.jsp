@@ -9,6 +9,34 @@
 
 </head>
 <body>
+<%@ include file="header.jsp" %>
+
+
+
+
+<p>
+    ${oneOffer}
+
+</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 <a href="#" id="addClass"> Open chat now </a>
@@ -129,6 +157,9 @@
 
 
 <%@ include file="bootstrapIncludeLast.jsp" %>
+<div>
+    <%@ include file="footer.jsp" %>
+</div>
 
 </body>
 </html>

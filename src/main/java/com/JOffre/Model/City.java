@@ -18,7 +18,4 @@ public enum City {
     SALE,
     BENIMELLAL,
     NADOR
-
-
-
 }
