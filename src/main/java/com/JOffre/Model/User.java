@@ -16,11 +16,13 @@ public class User implements Serializable {
 
     public void setFavorites(List<Offre> favorites) { this.favorites = favorites; }
 
-    public List<Offre> getOffres() {
+    public List<Offre> getOffers() {
         return offers;
     }
 
-    public void setOffres(List<Offre> offers) { this.offers = offers; }
+    public void setOffers(List<Offre> offers) {
+        this.offers = offers;
+    }
 
     public String getIdUser() {
         return idUser;

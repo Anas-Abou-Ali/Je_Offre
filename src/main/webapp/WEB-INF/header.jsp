@@ -30,6 +30,7 @@
         <c:choose>
             <c:when test="${ !empty sessionScope.user}">
                     <a href="profile"> <c:out value="${sessionScope.user.firstName}" /></a>
+                    <a type="button" class="btn btn-primary" href="login?logout=out" > Log out </a>
             </c:when>
             <c:otherwise>
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#connexion" >Se connecter</button>

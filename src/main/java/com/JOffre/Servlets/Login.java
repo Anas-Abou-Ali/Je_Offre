@@ -13,12 +13,14 @@ import java.io.IOException;
 
 @WebServlet(value = "/login")
 public class Login extends HttpServlet {
-    private static final int MAX_COOKIE_AGE     = 60*60*24*365; //one year
-    private static final String COOKIE_USER_ID  = "fid"; //name the userId cookie in the browser
-    private static final String COOKIE_USERNAME = "username"; //name the username cookie in the browser
-    private static final String VIEW            = "/index.jsp";
-    private static final String ATT_DAO_FACTORY = "daofactory";
+    private static final int MAX_COOKIE_AGE      = 60*60*24*365; //one year
+    private static final String COOKIE_USER_ID   = "fid"; //name the userId cookie in the browser
+    private static final String COOKIE_USERNAME  = "username"; //name the username cookie in the browser
+    private static final String VIEW             = "/index.jsp";
+    private static final String VIEW_RETURN      = "/index.jsp";
+    private static final String ATT_DAO_FACTORY  = "daofactory";
     private static final String ATT_SESSION_USER = "user";
+    private static final String GET_LOGOUT       = "logout";
     private IUserDao users                       = null;
 
 
@@ -35,19 +37,31 @@ public class Login extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        //calling metier object
-        ConnectUser connectUser = new ConnectUser();
+        String out = request.getParameter( GET_LOGOUT );
 
-        //processing the form and getting the user bean
-        User user = connectUser.connect(request, this.users);
+        if( out == null || out.trim().length() ==0 || !out.trim().equals("out") ){
+            //calling metier object
+            ConnectUser connectUser = new ConnectUser();
 
-        //setting the session for the user
-        if(user != null){
+            //processing the form and getting the user bean
+            User user = connectUser.connect(request, this.users);
+
+            //setting the session for the user
+            if(user != null){
+                HttpSession session = request.getSession();
+                session.setAttribute(ATT_SESSION_USER, user);
+            }
+
+            response.sendRedirect( request.getContextPath() + VIEW );
+        }else{
             HttpSession session = request.getSession();
-            session.setAttribute(ATT_SESSION_USER, user);
+            session.invalidate();
+
+            //redirection to home page
+            response.sendRedirect( VIEW_RETURN );
         }
 
-        response.sendRedirect( request.getContextPath() + VIEW );
+
     }
 
 }

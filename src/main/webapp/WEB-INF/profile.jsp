@@ -26,11 +26,20 @@ ${user.firstName}
 <h3>DEMANDERS</h3>
 
 
-<c:forEach items="${demanders}" var="demander">
-    ${demander.firstName}
+<form action="profile" method="POST">
+    <label for="idDemander">répondre à une demande</label>
+    <select id="idDemander" name="idDemander">
+        <c:forEach items="${demanders}" var="demander">
+            <option value="${demander.idUser}">${demander.firstName} </option>
+        </c:forEach>
+    </select>
+    <button type="submit button" class="btn btn-primary"> répondre </button>
+</form>
+
+<h3>DEMANDER selected messages</h3>
+<c:forEach items="${chat}" var="mess">
+    <p>${mess.message}</p>
 </c:forEach>
-
-
 
 
 <%@ include file="bootstrapIncludeLast.jsp" %>
