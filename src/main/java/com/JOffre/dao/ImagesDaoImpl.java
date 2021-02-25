@@ -17,6 +17,7 @@ public class ImagesDaoImpl implements IImagesDao {
 
     private static final String SQL_INSERT = "INSERT INTO Images(offerId, pathToImage) VALUES(?, ?)";
     private static final String SQL_SELECT = "SELECT imageId, offerId , pathToImage from Images where imageId = ? ";
+    private static final String SQL_SELECT_ONE_IMG = "SELECT imageId, offerId , pathToImage from Images where offerId = ? limit 1";
     private static final String SQL_DELETE = "DELETE FROM images WHERE imageId = ? ";
     private static final String SQL_SELECT_LIST_BY_OFFER = "SELECT imageId, offerId , pathToImage FROM Images WHERE offerId = ?";
 
@@ -112,7 +113,7 @@ public class ImagesDaoImpl implements IImagesDao {
 
             resultSet = preparedStatement.executeQuery();
             /* Parcours de la ligne de données de l'éventuel ResulSet retourné */
-            if ( resultSet.next() ) {
+            while ( resultSet.next() ) {
                 images.add( mapToImage(resultSet) );
             }
 
@@ -123,6 +124,29 @@ public class ImagesDaoImpl implements IImagesDao {
             closeResources( resultSet, preparedStatement, connection );
         }
         return images;
+    }
 
+    @Override
+    public Image getOneImgForOffer(Long offerId) throws DaoException {
+        Image image = null;
+        ResultSet resultSet = null;
+
+        try {
+            connection = daoFactory.getConnection();
+            preparedStatement = initPreparedStatement( connection, SQL_SELECT_ONE_IMG, false, offerId);
+
+            resultSet = preparedStatement.executeQuery();
+            /* Parcours de la ligne de données de l'éventuel ResulSet retourné */
+            if ( resultSet.next() ) {
+                image = mapToImage(resultSet);
+            }
+
+        } catch(SQLException e){
+            throw new DaoException(e);
+        }
+        finally {
+            closeResources( resultSet, preparedStatement, connection );
+        }
+        return  image;
     }
 }

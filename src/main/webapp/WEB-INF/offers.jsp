@@ -13,6 +13,9 @@
         <c:forEach var="offer" items="${offers}" varStatus="status">
             <a href="offer?off=${offer.offerId}">
                 <c:out value="${offer.titre} ${  status.count }"/>
+                <c:if test="${!empty offer.photos}">
+                    img: ${offer.photos[0].pathToImage}
+                </c:if>
             </a>
         </c:forEach>
 

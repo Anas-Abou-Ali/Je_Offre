@@ -12,6 +12,9 @@
 
 <p>
     ${offer.titre}
+    <c:if test="${!empty offer.photos}">
+        img: ${offer.photos[0].pathToImage}
+    </c:if>
 </p>
 
 

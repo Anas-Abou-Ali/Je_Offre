@@ -18,7 +18,7 @@ public class ConnectUser {
         String idUser = request.getParameter(FIELD_USER_ID);
         String username = request.getParameter(FIELD_USERNAME);
 
-        if( idUser != null && username != null && username.trim().length() != 0 && idUser.trim().length() != 0){
+        if( idUser != null && idUser.trim().length() != 0 && username != null && username.trim().length() != 0 ){
             //check if user already exist
             User user = users.get( idUser );
 
@@ -27,7 +27,7 @@ public class ConnectUser {
                 user = new User();
                 user.setIdUser( idUser );
                 user.setFirstName( username );
-                users.create( user );
+                user = users.create( user );
             }
 
             return user;

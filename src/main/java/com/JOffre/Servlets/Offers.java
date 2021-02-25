@@ -1,14 +1,17 @@
 package com.JOffre.Servlets;
 
 
+import com.JOffre.Model.Image;
 import com.JOffre.Model.Offre;
 import com.JOffre.dao.DaoFactory;
+import com.JOffre.dao.IImagesDao;
 import com.JOffre.dao.IOffreDao;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(value = "/offers")
@@ -24,10 +27,12 @@ public class Offers extends HttpServlet {
 
     private static final String VIEW            = "/WEB-INF/offers.jsp";
     private IOffreDao offers                    = null;
+    private IImagesDao images                   = null;
 
     @Override
     public void init() throws ServletException{
         this.offers = ( (DaoFactory) getServletContext().getAttribute( ATT_DAO_FACTORY ) ).getOfferDao();
+        this.images = ( (DaoFactory) getServletContext().getAttribute( ATT_DAO_FACTORY ) ).getImagesDao();
     }
 
 
@@ -51,6 +56,12 @@ public class Offers extends HttpServlet {
         if(offers == null || offers.isEmpty())
             offers = this.offers.getOffresCity( 0 );
 
+        for(Offre off : offers){
+            Image offerImage = this.images.getOneImgForOffer(  off.getOfferId()  );
+            List<Image> photos = new ArrayList<>();
+            photos.add(offerImage);
+            off.setPhotos(photos);
+        }
 
         request.setAttribute(ATT_OFFERS, offers);
         this.getServletContext().getRequestDispatcher( VIEW ).forward( request, response );

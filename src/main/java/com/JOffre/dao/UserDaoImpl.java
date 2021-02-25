@@ -27,7 +27,7 @@ public class UserDaoImpl implements IUserDao{
         ResultSet generatedValues = null;
         try {
             connection = daoFactory.getConnection();
-            preparedStatement = initPreparedStatement( connection, SQL_INSERT, true, user.getIdUser(), user.getFirstName() );
+            preparedStatement = initPreparedStatement( connection, SQL_INSERT, false, user.getIdUser(), user.getFirstName() );
 
             int status = preparedStatement.executeUpdate();
             if ( status == 0 ) {
@@ -35,12 +35,12 @@ public class UserDaoImpl implements IUserDao{
             }
 
             //recuperation de l'id
-            generatedValues = preparedStatement.getGeneratedKeys();
-            if ( generatedValues.next() ) {
-                user.setIdUser( generatedValues.getString( "idUser" ) );
-            } else {
-                throw new DaoException("failed to create a user");
-            }
+           // generatedValues = preparedStatement.getGeneratedKeys();
+           // if ( generatedValues.next() ) {
+             //   user.setIdUser( generatedValues.getString( "idUser" ) );
+           // } else {
+             //   throw new DaoException("failed to create a user");
+           // }
         } catch(SQLException e){
             throw new DaoException(e);
         }

@@ -1,8 +1,10 @@
 package com.JOffre.Servlets;
 
+import com.JOffre.Model.Image;
 import com.JOffre.Model.Message;
 import com.JOffre.Model.Offre;
 import com.JOffre.dao.DaoFactory;
+import com.JOffre.dao.IImagesDao;
 import com.JOffre.dao.IMessageDao;
 import com.JOffre.dao.IOffreDao;
 import com.JOffre.metier.Messanger;
@@ -11,6 +13,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -25,11 +28,13 @@ public class OfferDetail extends HttpServlet {
 
     private IOffreDao offers                    = null;
     private IMessageDao messages                = null;
+    private IImagesDao images                   = null;
 
     @Override
     public void init() throws ServletException{
         this.offers   = ( (DaoFactory) getServletContext().getAttribute( ATT_DAO_FACTORY ) ).getOfferDao();
         this.messages = ( (DaoFactory) getServletContext().getAttribute( ATT_DAO_FACTORY ) ).getMessageDao();
+        this.images = ( (DaoFactory) getServletContext().getAttribute( ATT_DAO_FACTORY ) ).getImagesDao();
 
     }
 
@@ -43,6 +48,11 @@ public class OfferDetail extends HttpServlet {
         }else{
             Messanger messanger = new Messanger();
             Offre offer = this.offers.get( Long.parseLong( offerId ) );
+            
+            Image offerImage = this.images.getOneImgForOffer( Long.parseLong( offerId ) );
+            List<Image> photos = new ArrayList<>();
+            photos.add(offerImage);
+            offer.setPhotos(photos);
 
             List<Message> chat  = messanger.receive(request, this.messages, offer.getIdUser() );
 
@@ -67,6 +77,10 @@ public class OfferDetail extends HttpServlet {
 
         }else{
             Offre offer = this.offers.get( Long.parseLong( offerId ) );
+            Image offerImage = this.images.getOneImgForOffer( Long.parseLong( offerId ) );
+            List<Image> photos = new ArrayList<>();
+            photos.add(offerImage);
+            offer.setPhotos(photos);
 
             List<Message> chat  = messanger.receive(request, messages, offer.getIdUser() );
 

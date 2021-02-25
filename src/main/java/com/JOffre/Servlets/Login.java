@@ -32,14 +32,26 @@ public class Login extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String out = request.getParameter( GET_LOGOUT );
+
+        if( out == null || out.trim().length() ==0 || !out.trim().equals("out") ){
+            response.sendRedirect( request.getContextPath() +  VIEW_RETURN );
+
+        }else{
+            HttpSession session = request.getSession();
+            session.invalidate();
+
+            //redirection to home page
+            response.sendRedirect( request.getContextPath() + VIEW_RETURN );
+        }
+
+
 
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String out = request.getParameter( GET_LOGOUT );
 
-        if( out == null || out.trim().length() ==0 || !out.trim().equals("out") ){
             //calling metier object
             ConnectUser connectUser = new ConnectUser();
 
@@ -53,13 +65,7 @@ public class Login extends HttpServlet {
             }
 
             response.sendRedirect( request.getContextPath() + VIEW );
-        }else{
-            HttpSession session = request.getSession();
-            session.invalidate();
 
-            //redirection to home page
-            response.sendRedirect( VIEW_RETURN );
-        }
 
 
     }
