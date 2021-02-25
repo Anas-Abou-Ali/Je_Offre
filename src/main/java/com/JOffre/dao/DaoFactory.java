@@ -10,13 +10,13 @@ import java.util.Properties;
 
 public class DaoFactory {
     //properties file constants keys (envDB is key value file)
-    private static final String PROPERTIES_FILE      = "/com/JOffre/dao//envDB.properties";
+    private static final String PROPERTIES_FILE      = "/com/JOffre/dao/envDB.properties";
     private static final String PROPERTY_URL         = "URL";
     private static final String PROPERTY_DRIVER      = "DRIVER";
     private static final String PROPERTY_USERNAME    = "DBUSER";
     private static final String PROPERTY_PASSWORD    = "DBPASSWORD";
 
-    private String DBUrl = "jdbc:mysql://localhost:3306/ensias";
+    private String DBUrl = "jdbc:mysql://localhost:3306/joffre";
     private String DBUser = "root";
     private String DBPassword = "root";
 
