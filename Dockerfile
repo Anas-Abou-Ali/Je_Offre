@@ -6,18 +6,18 @@
 #EXPOSE 8080
 
 
-#FROM tomcat:9.0
-#VOLUME /tmp
-#COPY target/*.war  /usr/local/tomcat/webapps
-#EXPOSE 8080
-#CMD ["catalina.sh","run"]
-
-
-
-
-FROM jboss/wildfly
-COPY target/*.war /opt/jboss/wildfly/standalone/deployments/
+FROM tomcat:9.0
+VOLUME /tmp
+COPY target/Offre-1.0-SNAPSHOT  /usr/local/tomcat/webapps
 EXPOSE 8080
+CMD ["catalina.sh","run"]
+
+
+
+
+#FROM jboss/wildfly
+#COPY target/*.war /opt/jboss/wildfly/standalone/deployments/
+#EXPOSE 8080
 
 
 #docker build -t kingridda/joffrejee .
