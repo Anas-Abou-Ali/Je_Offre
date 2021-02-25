@@ -15,10 +15,17 @@
 </p>
 
 
+
+
 <!-- chat pop up button-->
 <button id="addClass" class="btn btn-primary">
     <i class="fa fa-commenting fa-lg" aria-hidden="true"></i>
 </button>
+
+<c:forEach items="${chat}" var="message" >
+            ${message.message}
+</c:forEach>
+
 <%@ include file="chat.jsp" %>
 
 

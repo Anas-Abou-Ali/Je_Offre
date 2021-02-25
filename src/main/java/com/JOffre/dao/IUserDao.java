@@ -7,4 +7,6 @@ public interface IUserDao {
     User update(User user) throws DaoException;
     void delete(String id) throws DaoException;
     User get(String id) throws DaoException;
+
+
 }

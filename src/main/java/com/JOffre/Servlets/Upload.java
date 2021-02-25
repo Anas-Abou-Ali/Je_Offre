@@ -1,7 +1,6 @@
 package com.JOffre.Servlets;
 
-import com.JOffre.Model.Category;
-import com.JOffre.Model.City;
+
 import com.JOffre.Model.Image;
 import com.JOffre.Model.Offre;
 import com.JOffre.dao.DaoFactory;
@@ -18,6 +17,8 @@ import java.io.*;
 import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
+
+import static com.JOffre.Model.SharedEnums.*;
 
 public class Upload extends HttpServlet {
 
@@ -45,8 +46,8 @@ public class Upload extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setAttribute("City", City.values());
-        request.setAttribute("Category", Category.values());
+        request.setAttribute("City", City);
+        request.setAttribute("Category", Category);
         this.getServletContext().getRequestDispatcher( VIEW ).forward( request, response );
 
     }
@@ -75,8 +76,8 @@ public class Upload extends HttpServlet {
         }else{
             request.setAttribute("form", offerFormUploader);
             request.setAttribute("offer", offer);
-            request.setAttribute("City", City.values());
-            request.setAttribute("Category", Category.values());
+            request.setAttribute("City", City);
+            request.setAttribute("Category", Category);
             this.getServletContext().getRequestDispatcher( VIEW ).forward( request, response );
         }
     }

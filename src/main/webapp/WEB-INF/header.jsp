@@ -29,7 +29,7 @@
 
         <c:choose>
             <c:when test="${ !empty sessionScope.user}">
-                    <c:out value="${sessionScope.user.firstName}"></c:out>
+                    <a href="profile"> <c:out value="${sessionScope.user.firstName}" /></a>
             </c:when>
             <c:otherwise>
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#connexion" >Se connecter</button>

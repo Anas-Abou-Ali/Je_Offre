@@ -10,11 +10,28 @@ public class Offre implements Serializable {
     private String titre;
     private Timestamp date;
     private String description;
-    private City city;
-    private Category category;
+    private Integer city;
+    private Integer category;
     private List<Image> photos;
     private String idUser;
     private String userFirstName;
+
+    public Integer getCity() {
+        return city;
+    }
+
+    public void setCity(Integer city) {
+        this.city = city;
+    }
+
+    public Integer getCategory() {
+        return category;
+    }
+
+    public void setCategory(Integer category) {
+        this.category = category;
+    }
+
     private String userLastName;
     private Integer score;
 
@@ -94,21 +111,7 @@ public class Offre implements Serializable {
         this.description = description;
     }
 
-    public City getCity() {
-        return city;
-    }
 
-    public void setCity(City city) {
-        this.city = city;
-    }
-
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
-    }
 
 
 }

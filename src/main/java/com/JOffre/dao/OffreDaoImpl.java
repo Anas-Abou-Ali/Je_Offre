@@ -1,7 +1,5 @@
 package com.JOffre.dao;
 
-import com.JOffre.Model.Category;
-import com.JOffre.Model.City;
 import com.JOffre.Model.Offre;
 import static com.JOffre.daoUtil.Util.*;
 
@@ -14,7 +12,7 @@ import java.util.List;
 
 public class OffreDaoImpl implements IOffreDao{
 
-    private static final String SQL_INSERT = "INSERT INTO offer(idUser, title, description, date, city, category) VALUES(?,?,?,?,?,?)";
+    private static final String SQL_INSERT = "INSERT INTO offer(idUser, title, description, city, category) VALUES(?,?,?,?,?)";
     private static final String SQL_SELECT = "SELECT offerId, offer.idUser, title, description, date, city, category, firstName, lastName from offer JOIN user on user.idUser = offer.idUser where offerId = ? ";
     private static final String SQL_UPDATE = "UPDATE offer set title  = ?, description = ?, city = ?, category = ?  where offerId = ? ";
     private static final String SQL_DELETE = "DELETE from offer where offerId = ? ";
@@ -22,10 +20,8 @@ public class OffreDaoImpl implements IOffreDao{
     private static final String SQL_SELECT_BY_CITY          = "SELECT offerId, idUser, title, description, date, city, category from offer where city = ? ";
     private static final String SQL_SELECT_BY_CATEGORY      = "SELECT offerId, idUser, title, description, date, city, category from offer where category = ? ";
     private static final String SQL_SELECT_BY_CITY_CATEGORY = "SELECT offerId, idUser, title, description, date, city, category from offer where city = ? and category = ?";
-    private static final String SQL_SELECT_BY_SEARCH        = "SELECT offerId, idUser, title, description, date, city, category from offer WHERE title like '%?%' ";
+    private static final String SQL_SELECT_BY_SEARCH        = "SELECT offerId, idUser, title, description, date, city, category from offer where title LIKE ? ESCAPE '!'";
 
-    private static final String SQL_SELECT_FAVORITES        = "SELECT off.offerId, off.idUser, title, description, date, city, category from offer off JOIN favoritize fav ON fav.offerId = off.offerId WHERE fav.idUser = ? ";
-    private static final String SQL_SELECT_MY_OFFERS        = "SELECT offerId, idUser, title, description, date, city, category from offer WHERE idUser = ? ";
 
     private DaoFactory       daoFactory;
     Connection connection               = null;
@@ -41,7 +37,7 @@ public class OffreDaoImpl implements IOffreDao{
         ResultSet generatedValues = null;
         try {
             connection = daoFactory.getConnection();
-            preparedStatement = initPreparedStatement( connection, SQL_INSERT, true, offer.getIdUser(), offer.getTitre(), offer.getDescription(), offer.getDate(), cityToInt( offer.getCity() ), categoryToInt( offer.getCategory() ) );
+            preparedStatement = initPreparedStatement( connection, SQL_INSERT, true, offer.getIdUser(), offer.getTitre(), offer.getDescription(), offer.getCity(), offer.getCategory() );
 
             int status = preparedStatement.executeUpdate();
             if ( status == 0 ) {
@@ -129,13 +125,13 @@ public class OffreDaoImpl implements IOffreDao{
     }
 
     @Override
-    public List<Offre> getOffres(City city) throws DaoException {
+    public List<Offre> getOffresCity(Integer city) throws DaoException {
         List<Offre> offers = new ArrayList<>();
         ResultSet resultSet = null;
 
         try {
             connection = daoFactory.getConnection();
-            preparedStatement = initPreparedStatement( connection, SQL_SELECT_BY_CITY, false, cityToInt(city) );
+            preparedStatement = initPreparedStatement( connection, SQL_SELECT_BY_CITY, false, city );
             resultSet = preparedStatement.executeQuery();
 
             while ( resultSet.next() ) {
@@ -152,13 +148,13 @@ public class OffreDaoImpl implements IOffreDao{
     }
 
     @Override
-    public List<Offre> getOffres(Category category) throws DaoException {
+    public List<Offre> getOffresCategory(Integer category) throws DaoException {
         List<Offre> offers = new ArrayList<>();
         ResultSet resultSet = null;
 
         try {
             connection = daoFactory.getConnection();
-            preparedStatement = initPreparedStatement( connection, SQL_SELECT_BY_CATEGORY, false, categoryToInt(category) );
+            preparedStatement = initPreparedStatement( connection, SQL_SELECT_BY_CATEGORY, false, category);
             resultSet = preparedStatement.executeQuery();
 
             while ( resultSet.next() ) {
@@ -175,13 +171,13 @@ public class OffreDaoImpl implements IOffreDao{
     }
 
     @Override
-    public List<Offre> getOffres(City city, Category category) throws DaoException {
+    public List<Offre> getOffres(Integer city, Integer category) throws DaoException {
         List<Offre> offers = new ArrayList<>();
         ResultSet resultSet = null;
 
         try {
             connection = daoFactory.getConnection();
-            preparedStatement = initPreparedStatement( connection, SQL_SELECT_BY_CITY_CATEGORY, false, cityToInt(city), categoryToInt(category) );
+            preparedStatement = initPreparedStatement( connection, SQL_SELECT_BY_CITY_CATEGORY, false, city, category );
             resultSet = preparedStatement.executeQuery();
 
             while ( resultSet.next() ) {
@@ -199,12 +195,18 @@ public class OffreDaoImpl implements IOffreDao{
 
     @Override
     public List<Offre> searchOffers(String str) throws DaoException {
+        str = str.replace("!", "!!")
+                .replace("%", "!%")
+                .replace("_", "!_")
+                .replace("[", "![");
+
+
         List<Offre> offers = new ArrayList<>();
         ResultSet resultSet = null;
 
         try {
             connection = daoFactory.getConnection();
-            preparedStatement = initPreparedStatement( connection, SQL_SELECT_BY_SEARCH, false, str );
+            preparedStatement = initPreparedStatement( connection, SQL_SELECT_BY_SEARCH, false, "%"+str +"%");
             resultSet = preparedStatement.executeQuery();
 
             while ( resultSet.next() ) {
@@ -220,49 +222,7 @@ public class OffreDaoImpl implements IOffreDao{
         return offers;
     }
 
-    @Override
-    public List<Offre> getFavorites(String idUser) throws DaoException {
-        List<Offre> offers = new ArrayList<>();
-        ResultSet resultSet = null;
 
-        try {
-            connection = daoFactory.getConnection();
-            preparedStatement = initPreparedStatement( connection, SQL_SELECT_FAVORITES, false, idUser );
-            resultSet = preparedStatement.executeQuery();
 
-            while ( resultSet.next() ) {
-                offers.add( mapToOffer_withNoUserName(resultSet) );
-            }
 
-        } catch(SQLException e){
-            throw new DaoException(e);
-        }
-        finally {
-            closeResources( resultSet, preparedStatement, connection );
-        }
-        return offers;
-    }
-
-    @Override
-    public List<Offre> getMyOffers(String idUser) throws DaoException {
-        List<Offre> offers = new ArrayList<>();
-        ResultSet resultSet = null;
-
-        try {
-            connection = daoFactory.getConnection();
-            preparedStatement = initPreparedStatement( connection, SQL_SELECT_MY_OFFERS, false, idUser );
-            resultSet = preparedStatement.executeQuery();
-
-            while ( resultSet.next() ) {
-                offers.add( mapToOffer_withNoUserName(resultSet) );
-            }
-
-        } catch(SQLException e){
-            throw new DaoException(e);
-        }
-        finally {
-            closeResources( resultSet, preparedStatement, connection );
-        }
-        return offers;
-    }
 }

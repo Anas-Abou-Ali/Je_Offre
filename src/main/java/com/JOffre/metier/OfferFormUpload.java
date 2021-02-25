@@ -125,7 +125,11 @@ public class OfferFormUpload {
 
             offer.setDescription( description );
             offer.setTitre(title);
-            offer.setIdUser( user.getIdUser() );
+            try{
+                offer.setIdUser( user.getIdUser() );
+            }catch (Exception e){
+                setError(FIELD_USER, "not authorized");
+            }
 
 
 

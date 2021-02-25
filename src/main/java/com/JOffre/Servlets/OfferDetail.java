@@ -1,5 +1,6 @@
 package com.JOffre.Servlets;
 
+import com.JOffre.Model.Message;
 import com.JOffre.Model.Offre;
 import com.JOffre.dao.DaoFactory;
 import com.JOffre.dao.IMessageDao;
@@ -10,14 +11,18 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.util.List;
+import java.util.Map;
 
 @WebServlet(value = "/offer")
 public class OfferDetail extends HttpServlet {
     private static final String ATT_DAO_FACTORY = "daofactory";
     private static final String ATT_OFFER       = "offer";
+    private static final String ATT_CHAT        = "chat";
     private static final String GET_OFFER       = "off";
     private static final String VIEW            = "/WEB-INF/offerDetail.jsp";
     private static final String VIEW_RETURN     = "/index.jsp";
+
     private IOffreDao offers                    = null;
     private IMessageDao messages                = null;
 
@@ -34,9 +39,16 @@ public class OfferDetail extends HttpServlet {
 
         if(offerId == null || offerId.trim().length() == 0){
             response.sendRedirect( request.getContextPath() + VIEW_RETURN );
+
         }else{
+            Messanger messanger = new Messanger();
             Offre offer = this.offers.get( Long.parseLong( offerId ) );
+
+            List<Message> chat  = messanger.receive(request, this.messages, offer.getIdUser() );
+
+            request.setAttribute(ATT_CHAT, chat);
             request.setAttribute(ATT_OFFER, offer);
+
             this.getServletContext().getRequestDispatcher( VIEW ).forward( request, response );
         }
     }
@@ -48,11 +60,20 @@ public class OfferDetail extends HttpServlet {
         Messanger messanger = new Messanger();
         messanger.sendMessage(request, messages);
 
-        if(offerId == null || offerId.trim().length() == 0){
+
+        if( offerId == null || offerId.trim().length() == 0){
+
             response.sendRedirect( request.getContextPath() + VIEW_RETURN );
+
         }else{
             Offre offer = this.offers.get( Long.parseLong( offerId ) );
+
+            List<Message> chat  = messanger.receive(request, messages, offer.getIdUser() );
+
+
+            request.setAttribute(ATT_CHAT, chat);
             request.setAttribute(ATT_OFFER, offer);
+
             this.getServletContext().getRequestDispatcher( VIEW ).forward( request, response );
         }
     }

@@ -46,4 +46,11 @@ public class User implements Serializable {
         this.lastName = lastName;
     }
 
+    public List<Message> getMessages() {
+        return messages;
+    }
+
+    public void setMessages(List<Message> messages) {
+        this.messages = messages;
+    }
 }

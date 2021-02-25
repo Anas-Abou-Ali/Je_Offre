@@ -60,8 +60,8 @@ public class Util {
             offer.setTitre( resultSet.getString("title") );
             offer.setIdUser( resultSet.getString("idUser") );
             offer.setDescription( resultSet.getString("description") );
-            offer.setCity( intToCity( resultSet.getInt("city") ) );
-            offer.setCategory( intToCategory( resultSet.getInt("category") ) );
+            offer.setCity( resultSet.getInt("city") );
+            offer.setCategory( resultSet.getInt("category") );
             offer.setDate( resultSet.getTimestamp("date") );
             offer.setUserFirstName( resultSet.getString("firstName") );
             offer.setUserLastName( resultSet.getString("lastName") );
@@ -76,8 +76,8 @@ public class Util {
         offer.setTitre( resultSet.getString("title") );
         offer.setIdUser( resultSet.getString("idUser") );
         offer.setDescription( resultSet.getString("description") );
-        offer.setCity( intToCity( resultSet.getInt("city") ) );
-        offer.setCategory( intToCategory( resultSet.getInt("category") ) );
+        offer.setCity( resultSet.getInt("city") );
+        offer.setCategory( resultSet.getInt("category") );
         offer.setDate( resultSet.getTimestamp("date") );
             /*
             photos
@@ -110,14 +110,5 @@ public class Util {
         return message;
     }
 
-    //conversion between Integer and enum City
-    public static Integer cityToInt(City city){ if(city!=null) return city.ordinal(); else return 0;}
-
-    public static City intToCity(Integer n){return City.values()[n];}
-
-    //conversion between Integer and enum City
-    public static Integer categoryToInt(Category category){ if(category!=null) return category.ordinal();else return 0; }
-
-    public static Category intToCategory(Integer n){return Category.values()[n];}
 }
 

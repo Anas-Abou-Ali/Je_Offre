@@ -15,6 +15,7 @@
             <label for="title">Titre d'offre</label>
             <input type="text" id="title" name="title" value="<c:out value="${offer.titre}" />" />
             <span class="erreur">${form.errors['title']}</span>
+            <span class="erreur">${form.errors['user']}</span>
             <br />
 
             <label for="description">Description d'offre</label>
@@ -25,8 +26,8 @@
 
             <label for="city">Ville d'offre</label>
             <select id="city" name="city" value="<c:out value="${offer.city}" />">
-                <c:forEach var="ville" items="${City}">
-                    <option value="${ville.toString()}">${ville}</option>
+                <c:forEach var="ville" items="${City}" varStatus="status" >
+                    <option value="${status.index}">${ville}</option>
                 </c:forEach>
             </select>
             <span class="erreur">${form.errors["city"]}</span>
@@ -34,8 +35,8 @@
 
             <label for="category">Catégorie</label>
             <select id="category" name="category" value="<c:out value="${offer.category}" />">
-                <c:forEach var="category" items="${Category}">
-                    <option value="${category.toString()}">${category}</option>
+                <c:forEach var="category" items="${Category}" varStatus="status">
+                    <option value="${status.index}">${category}</option>
                 </c:forEach>
             </select>
             <span class="erreur">${form.errors['category']}</span>

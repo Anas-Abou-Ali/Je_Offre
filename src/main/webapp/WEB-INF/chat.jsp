@@ -68,7 +68,7 @@
     </div>
     <div class="popup-messages-footer">
         <form action="offer?off=${offer.offerId}" method="POST">
-            <input name="idUser" id="idUser" type="hidden" value="${offer.idUser}"/>
+            <input name="offerOwner" id="offerOwner" type="hidden" value="${offer.idUser}"/>
             <textarea id="status_message" placeholder="message..." rows="10" cols="40" name="message"></textarea>
             <button class="btn btn-primary" type="submit"><i class="fa fa-paper-plane fa-sm"></i> </button>
         </form>

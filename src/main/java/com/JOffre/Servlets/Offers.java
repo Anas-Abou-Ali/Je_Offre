@@ -1,7 +1,6 @@
 package com.JOffre.Servlets;
 
-import com.JOffre.Model.Category;
-import com.JOffre.Model.City;
+
 import com.JOffre.Model.Offre;
 import com.JOffre.dao.DaoFactory;
 import com.JOffre.dao.IOffreDao;
@@ -16,6 +15,13 @@ import java.util.List;
 public class Offers extends HttpServlet {
     private static final String ATT_DAO_FACTORY = "daofactory";
     private static final String ATT_OFFERS      = "offers";
+
+    private static final String GET_PARAM_CITY      = "city";
+    private static final String GET_PARAM_CATEGORY  = "category";
+    private static final String GET_PARAM_SEARCH    = "search";
+
+
+
     private static final String VIEW            = "/WEB-INF/offers.jsp";
     private IOffreDao offers                    = null;
 
@@ -29,21 +35,21 @@ public class Offers extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         List<Offre> offers = null;
-        String byCategory = request.getParameter("category");
-        String byCity = request.getParameter("city");
-        String bySearch = request.getParameter("search");
+        String byCategory = request.getParameter( GET_PARAM_CATEGORY );
+        String byCity = request.getParameter( GET_PARAM_CITY );
+        String bySearch = request.getParameter( GET_PARAM_SEARCH );
 
         if( byCategory != null && byCategory.trim().length() != 0 )
-            offers = this.offers.getOffres( Category.values()[ Integer.parseInt( byCategory ) ] );
+            offers = this.offers.getOffresCategory( Integer.parseInt( byCategory ) );
 
-        if( byCity != null && byCity.trim().length() != 0 )
-            offers = this.offers.getOffres( City.values()[ Integer.parseInt( byCity ) ] );
-
-        if( bySearch != null && bySearch.trim().length() != 0)
+        else if( bySearch != null && bySearch.trim().length() != 0)
             offers = this.offers.searchOffers( bySearch );
 
+        else if( byCity != null && byCity.trim().length() != 0 )
+            offers = this.offers.getOffresCity( Integer.parseInt( byCity ) );
+
         if(offers == null || offers.isEmpty())
-            offers = this.offers.getOffres( City.ALL );
+            offers = this.offers.getOffresCity( 0 );
 
 
         request.setAttribute(ATT_OFFERS, offers);

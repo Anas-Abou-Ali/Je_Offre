@@ -16,6 +16,9 @@
             </a>
         </c:forEach>
 
+        <p>${test}
+        </p>
+
 
 
 
