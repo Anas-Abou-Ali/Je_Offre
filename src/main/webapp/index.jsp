@@ -10,7 +10,7 @@
 
 
 </head>
-<body style="background-color: #a598ee;text-align:center">
+<body style="background-color: #FFFFFF;text-align:center">
 <%@ include file="WEB-INF/header.jsp" %>
     <div class="container h-100">
         <div class="row h-100 justify-content-center align-items-center">
