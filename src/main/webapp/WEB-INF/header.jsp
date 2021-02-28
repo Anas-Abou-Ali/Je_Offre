@@ -33,7 +33,8 @@
                     <a type="button" class="btn btn-primary" href="login?logout=out" > Log out </a>
             </c:when>
             <c:otherwise>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#connexion" >Se connecter</button>
+               <%-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#connexion" >Se connecter</button> --%>
+                <button type="button" class="btncnx" data-toggle="modal" data-target="#connexion" >Se connecter</button>
             </c:otherwise>
         </c:choose>
     </div>
