@@ -4,20 +4,108 @@
     <meta charset="UTF-8">
     <title>J'Offre.ma</title>
     <%@ include file="bootstrapIncludes.jsp" %>
-
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"  rel="stylesheet" />
 </head>
     <body>
         <%@ include file="header.jsp" %>
 
+                <main>
+                    <div class="container my-5">
 
-        <c:forEach var="offer" items="${offers}" varStatus="status">
-            <a href="offer?off=${offer.offerId}">
-                <c:out value="${offer.titre} ${  status.count }"/>
-                <c:if test="${!empty offer.photos}">
-                    img: ${offer.photos[0].pathToImage}
-                </c:if>
-            </a>
-        </c:forEach>
+                        <div class="row">
+                            <div class="col-md-1"></div>
+                            <div class="col-md-7">
+                                <c:forEach var="offer" items="${offers}" varStatus="status">
+                                <section class="newsfeed my-5">
+                                    <div class="post">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <div class="container">
+                                                    <!--auteur -->
+                                                    <div class="row">
+                                                        <div class="col-md-8">
+                                                            <div class="d-flex story">
+<%--                                                                <img href="/Anas_Abou_Ali" src="logo_don.jpg" class="rounded-circle" width="40" height="40" alt="Avatar"/>--%>
+                                                                <div class="md-2">
+                                                                    <a href="offer?off=${offer.offerId}">
+                                                                        <strong class="mt-5 ml-2">${offer.titre}</strong>
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!--l'offre-->
+                                            <div class="bg-image hover-overlay ripple shadow-1-strong rounded"
+                                                 data-mdb-ripple-color="light">
+                                                <c:if test="${!empty offer.photos}"> <img src="${offer.photos[0].getPathToImage()}" class="w-100" />
+                                                    <a href="#!">
+                                                        <div class="mask" style="background-color: rgba(251, 251, 251, 0.2)"></div>
+                                                    </a>
+                                                </c:if>
+                                            </div>
+                                            <!-- Interactions -->
+                                            <div  class="card-body">
+                                                <div class="container">
+                                                    <div class="row">
+                                                        <div class="col-md-8">
+                                                            <i class="far fa-heart fa-lg ml-0"></i>
+                                                            <i class="fas fa-heart fa-lg ml-0"></i>
+                                                            <i class="far fa-comment fa-lg mx-2"></i>
+                                                        </div>
+                                                        <div class="col-md-4 text-right">
+                                                            <i class="far fa-paper-plane fa-lg"></i>
+                                                        </div>
+                                                    </div>
+                                                    <!-- Liked by -->
+<%--                                                    <div class="row">--%>
+<%--                                                        <div class="col-md-8 mt-1">--%>
+<%--                                                            <img href="/Anas_Abou_Ali" src="logo_don.jpg" class="rounded-circle" width="20" height="20" alt="Avatar"/>--%>
+<%--                                                            <small>Aimee par <strong>4232 </strong>people</small>--%>
+<%--                                                        </div>--%>
+<%--                                                    </div>--%>
+                                                    <!-- Description -->
+                                                    <div class="row">
+                                                        <div class="col-md-12 mt-1">
+                                                            <p>
+                                                                <c:out value="${offer.titre} ${  status.count }"/>
+                                                                <strong class="text-dark"> <c:out value="${offer.userFirstName}"/> </strong> <c:out value="${offer.description}"/>
+                                                            </p>
+                                                        </div>
+
+                                                    </div>
+<%--                                                    <!-- Comments -->--%>
+<%--                                                    <div class="row">--%>
+<%--                                                        <!-- Visualisee tout les comentaire -->--%>
+<%--                                                    </div>--%>
+<%--                                                    <!-- Ajouter un commentair -->--%>
+<%--                                                    <hr />--%>
+<%--                                                    <div class="row mt-2">--%>
+<%--                                                        <div class="col-md-11">--%>
+<%--                                                            <div class="form-outline">--%>
+<%--                                                                <input type="text" id="form1" class="form-control" placeholder="Ajouter un commentaire" />--%>
+<%--                                                            </div>--%>
+<%--                                                        </div>--%>
+<%--                                                        <div class="col-md-1">--%>
+<%--                                                            <p class="text-info mt-1">Publier</p>--%>
+<%--                                                        </div>--%>
+<%--                                                    </div>--%>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                                </c:forEach>
+                            </div>
+                            <div class="col-md-2"></div>
+                        </div>
+                    </div>
+                </main>
+
+
 
         <p>${test}
         </p>
