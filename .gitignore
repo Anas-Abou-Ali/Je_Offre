@@ -3,6 +3,7 @@
 *.settings
 /bin/*
 /target/*
+/out/*
 .mvn
 *.class
 *.jar
