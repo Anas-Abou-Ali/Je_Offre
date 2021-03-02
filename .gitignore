@@ -13,3 +13,5 @@
 *.rar
 .idea/
 *.iml
+
+src/main/webapp/WEB-INF/web.xml
