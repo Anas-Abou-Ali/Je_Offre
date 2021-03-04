@@ -20,9 +20,15 @@ import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
 
+
+
 import static com.JOffre.Model.SharedEnums.*;
 
-
+@WebServlet( value = "/upload" )
+@MultipartConfig(
+        fileSizeThreshold = 1024 * 1024,//1 Mo
+        maxFileSize = 1024 * 1024 * 5, //5 Mo
+        maxRequestSize = 1024 * 1024 * 5 * 5 ) //25 Mo
 public class Upload extends HttpServlet {
 
     private static final String VIEW              = "/WEB-INF/upload.jsp";
@@ -30,7 +36,6 @@ public class Upload extends HttpServlet {
 
     private static final String ATT_DAO_FACTORY   = "daofactory";
 
-    private static final String STORE_PATH        = "path";
 
 
 
@@ -59,7 +64,7 @@ public class Upload extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //getting the path to where to store images path configuration from configuration and web.xml
-        String path = this.getServletConfig().getInitParameter( STORE_PATH );
+        String path = getServletContext().getRealPath("/uploads");
 
         //init a metier that handle the comming offer form
         OfferFormUpload offerFormUploader = new OfferFormUpload() ;
