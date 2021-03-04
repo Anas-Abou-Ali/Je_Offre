@@ -11,6 +11,8 @@ import com.JOffre.metier.OfferFormUpload;
 
 
 import javax.servlet.*;
+import javax.servlet.annotation.MultipartConfig;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.io.*;
 
@@ -19,6 +21,7 @@ import java.util.Date;
 import java.util.List;
 
 import static com.JOffre.Model.SharedEnums.*;
+
 
 public class Upload extends HttpServlet {
 
@@ -39,6 +42,7 @@ public class Upload extends HttpServlet {
 
     @Override
     public void init() throws ServletException{
+
         this.offerDao = ( (DaoFactory) getServletContext().getAttribute( ATT_DAO_FACTORY ) ).getOfferDao();
         this.userDao  = ( (DaoFactory) getServletContext().getAttribute( ATT_DAO_FACTORY ) ).getUserDao();
         this.imageDao  = ( (DaoFactory) getServletContext().getAttribute( ATT_DAO_FACTORY ) ).getImagesDao();
