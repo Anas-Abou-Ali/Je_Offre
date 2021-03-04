@@ -59,7 +59,7 @@ public class Upload extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //getting the path to where to store images path configuration from configuration and web.xml
-        String path = this.getServletConfig().getInitParameter( STORE_PATH );
+        String path = getServletContext().getRealPath("/uploads");
 
         //init a metier that handle the comming offer form
         OfferFormUpload offerFormUploader = new OfferFormUpload() ;
