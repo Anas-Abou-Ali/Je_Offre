@@ -231,7 +231,7 @@ public class OfferFormUpload {
             //open the streams
             in = new BufferedInputStream( fileContent, BUFFER_SIZE );
 
-            out = new BufferedOutputStream( new FileOutputStream( new File( path + image.getPathToImage() ) ), BUFFER_SIZE );
+            out = new BufferedOutputStream( new FileOutputStream( new File( path + File.separator + image.getPathToImage() ) ), BUFFER_SIZE );
 
             byte[] buffer = new byte[BUFFER_SIZE];
             int length;
