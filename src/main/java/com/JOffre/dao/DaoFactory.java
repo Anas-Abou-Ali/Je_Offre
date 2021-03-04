@@ -17,8 +17,8 @@ public class DaoFactory {
     private static final String PROPERTY_PASSWORD    = "DBPASSWORD";
 
     private String DBUrl = "jdbc:mysql://localhost:3306/Joffre";
-    private String DBUser = "administrateur";
-    private String DBPassword = "administrateur";
+    private String DBUser = "root";
+    private String DBPassword = "root";
 
     DaoFactory(String url, String username, String password) {
         this.DBPassword = password;
@@ -43,8 +43,8 @@ public class DaoFactory {
 //            properties.load(propertiesFile);
         url = "jdbc:mysql://localhost/Joffre";
         driver = "com.mysql.jdbc.Driver";
-        username =  "administrateur";
-        password =  "administrateur";
+        username =  "root";
+        password =  "root";
 //        }
 //        catch (IOException e) {
 //            throw new DaoConfigurationException("properties file can't be loaded " + PROPERTIES_FILE , e);
