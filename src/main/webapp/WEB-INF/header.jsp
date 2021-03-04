@@ -1,4 +1,3 @@
-
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="index.jsp"> <img src="logo_don.jpg" class="rounded-circle" width="30" height="30" class="d-inline-block align-top" alt="Logo">J'offre.ma</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -31,6 +30,7 @@
             </c:when>
             <c:otherwise>
 
+        <%-- This line was commented --%>
                <%-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#connexion" >Se connecter</button> --%>
 
 
