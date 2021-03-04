@@ -52,6 +52,8 @@ public class OfferFormUpload {
         //getting the inputs of non file fields
         String description = getFieldValue( request, FIELD_DESCRIPTION );
         String title       = getFieldValue( request, FIELD_TITLE );
+        Integer city        = Integer.parseInt( getFieldValue( request, FIELD_CITY ) );
+        Integer category    = Integer.parseInt( getFieldValue( request, FIELD_CATEGORY ) );
         User user = (User) request.getSession().getAttribute( ATT_SESSION_USER );
 
         //String c = getFieldValue( request, FIELD_CATEGORY ),cc =getFieldValue( request, FIELD_CITY );
@@ -125,6 +127,8 @@ public class OfferFormUpload {
 
             offer.setDescription( description );
             offer.setTitre(title);
+            offer.setCategory(category);
+            offer.setCity(city);
             try{
                 offer.setIdUser( user.getIdUser() );
             }catch (Exception e){
