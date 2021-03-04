@@ -88,27 +88,27 @@ create table favoritize
    primary key (offerId, idUser)
 );
 
-alter table Images add constraint FK_illustrate foreign key (offerId)
-      references Offer (offerId);
-alter table Messages add constraint FK_contact foreign key (idUser)
-      references User (idUser);
-
-alter table Messages add constraint FK_contact2 foreign key (sender_id_user)
-      references User (idUser);
-
-alter table Offer add constraint FK_offering foreign key (idUser)
-      references User (idUser);
-
-alter table Ratings add constraint FK_evaluating foreign key (offerId)
-      references Offer (offerId);
-
-alter table Ratings add constraint FK_evaluating2 foreign key (idUser)
-      references User (idUser);
-
-alter table favoritize add constraint FK_favoritize foreign key (offerId)
-      references Offer (offerId);
-
-alter table favoritize add constraint FK_favoritize2 foreign key (idUser)
-      references User (idUser);
-
-
+-- alter table Images add constraint FK_illustrate foreign key (offerId)
+--       references Offer (offerId);
+-- alter table Messages add constraint FK_contact foreign key (idUser)
+--       references User (idUser);
+--
+-- alter table Messages add constraint FK_contact2 foreign key (sender_id_user)
+--       references User (idUser);
+--
+-- alter table Offer add constraint FK_offering foreign key (idUser)
+--       references User (idUser);
+--
+-- alter table Ratings add constraint FK_evaluating foreign key (offerId)
+--       references Offer (offerId);
+--
+-- alter table Ratings add constraint FK_evaluating2 foreign key (idUser)
+--       references User (idUser);
+--
+-- alter table favoritize add constraint FK_favoritize foreign key (offerId)
+--       references Offer (offerId);
+--
+-- alter table favoritize add constraint FK_favoritize2 foreign key (idUser)
+--       references User (idUser);
+--
+--
