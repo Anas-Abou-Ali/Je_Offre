@@ -22,10 +22,7 @@ import java.util.List;
 
 import static com.JOffre.Model.SharedEnums.*;
 
-@WebServlet( urlPatterns = "/upload" )
-@MultipartConfig( fileSizeThreshold = 1024 * 1024,
-        maxFileSize = 1024 * 1024 * 5,
-        maxRequestSize = 1024 * 1024 * 5 * 5 )
+
 public class Upload extends HttpServlet {
 
     private static final String VIEW              = "/WEB-INF/upload.jsp";
