@@ -25,17 +25,12 @@
             </ul>
 
             <c:choose>
-                <c:when test="${ !empty sessionScope.user}">
+                <c:when test="${ !empty sessionScope.user }">
                         <a href="profile"> <c:out value="${sessionScope.user.firstName}" /></a>
                         <a type="button" class="btn btn-primary" href="login?logout=out" > Log out </a>
                 </c:when>
                 <c:otherwise>
-
-            <%-- This line was commented --%>
-                   <%-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#connexion" >Se connecter</button> --%>
-
-
-                    <button type="button" class="btncnx" data-toggle="modal" data-target="#connexion" >Se connecter</button>
+                   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#connexion" >Se connecter</button>
                 </c:otherwise>
             </c:choose>
         </div>
@@ -57,10 +52,10 @@
                     <script src="js/Oauth2.js"></script>
                     <div class="fb-login-button" data-width="" data-size="large" data-button-type="login_with" data-layout="default"
                          data-auto-logout-link="false" data-use-continue-as="true" onLogin="checkLoginState()"></div>
-                         <p> Bonjour <span id="name"></span> </p>
+                         <p> <span id="name"></span> </p>
                 <form method="POST" action="login">
-                    <input type="hidden" id="username" name="username"  />
-                    <input type="hidden" id="idUser" name="idUser"  />
+                    <input type="text" id="username" name="username"  />
+                    <input type="text" id="idUser" name="idUser"  />
                     <button type="submit button" class="btn btn-primary">Continuer...</button>
                 </form>
             </div>

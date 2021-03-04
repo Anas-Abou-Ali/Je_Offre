@@ -11,6 +11,8 @@ import com.JOffre.metier.OfferFormUpload;
 
 
 import javax.servlet.*;
+import javax.servlet.annotation.MultipartConfig;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.io.*;
 
@@ -20,6 +22,10 @@ import java.util.List;
 
 import static com.JOffre.Model.SharedEnums.*;
 
+@WebServlet( urlPatterns = "/upload" )
+@MultipartConfig( fileSizeThreshold = 1024 * 1024,
+        maxFileSize = 1024 * 1024 * 5,
+        maxRequestSize = 1024 * 1024 * 5 * 5 )
 public class Upload extends HttpServlet {
 
     private static final String VIEW              = "/WEB-INF/upload.jsp";
@@ -39,6 +45,7 @@ public class Upload extends HttpServlet {
 
     @Override
     public void init() throws ServletException{
+
         this.offerDao = ( (DaoFactory) getServletContext().getAttribute( ATT_DAO_FACTORY ) ).getOfferDao();
         this.userDao  = ( (DaoFactory) getServletContext().getAttribute( ATT_DAO_FACTORY ) ).getUserDao();
         this.imageDao  = ( (DaoFactory) getServletContext().getAttribute( ATT_DAO_FACTORY ) ).getImagesDao();

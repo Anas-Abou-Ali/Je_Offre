@@ -62,12 +62,9 @@ public class Login extends HttpServlet {
             if(user != null){
                 HttpSession session = request.getSession();
                 session.setAttribute(ATT_SESSION_USER, user);
+
             }
-
-            response.sendRedirect( request.getContextPath() + VIEW );
-
-
-
+        response.sendRedirect( request.getContextPath() + VIEW );
     }
 
 }
