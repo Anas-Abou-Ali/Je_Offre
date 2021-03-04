@@ -3,6 +3,9 @@
 /* Date de création :  18/02/2021 03:21:12                      */
 /*==============================================================*/
 
+drop database joffre;
+create database joffre;
+use joffre;
 
 drop table if exists Images;
 
