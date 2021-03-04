@@ -10,9 +10,9 @@
 
 
 </head>
-<body style="background-color: #FFFFFF;text-align:center">
+<body style="background-color: #FFFFFF;">
 <%@ include file="WEB-INF/header.jsp" %>
-    <div class="container h-100">
+<div class="container h-100">
         <div class="row h-100 justify-content-center align-items-center">
             <form action="offers" method="GET" >
                 <div class="row">
@@ -97,7 +97,9 @@
                 </div>
             </form>
         </div>
-    </div>
+</div>
+
+
 
         <%@ include file="WEB-INF/bootstrapIncludeLast.jsp" %>
     <div>
