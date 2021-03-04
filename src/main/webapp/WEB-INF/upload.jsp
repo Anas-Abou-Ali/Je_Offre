@@ -6,7 +6,6 @@
     <%@ include file="bootstrapIncludes.jsp" %>
 </head>
 <body>
-
 <%@ include file="header.jsp" %>
 <div class="row">
     <div class="col-sm-3"></div>

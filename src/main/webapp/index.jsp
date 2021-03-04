@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>J'Offre</title>
-    <link href="css/index.css" rel="stylesheet" >
+    <link href="css/index1.css" rel="stylesheet" >
     <%@ include file="WEB-INF/bootstrapIncludes.jsp" %>
 
 
