@@ -16,9 +16,9 @@ public class DaoFactory {
     private static final String PROPERTY_USERNAME    = "DBUSER";
     private static final String PROPERTY_PASSWORD    = "DBPASSWORD";
 
-    private String DBUrl = "jdbc:mysql://localhost:3306/joffre";
-    private String DBUser = "root";
-    private String DBPassword = "root";
+    private String DBUrl = "jdbc:mysql://localhost:3306/Joffre";
+    private String DBUser = "administrateur";
+    private String DBPassword = "administrateur";
 
     DaoFactory(String url, String username, String password) {
         this.DBPassword = password;
@@ -32,22 +32,23 @@ public class DaoFactory {
         String driver;
         String username;
         String password;
-        ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
-        InputStream propertiesFile = classLoader.getResourceAsStream(PROPERTIES_FILE);
+//        ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+//        InputStream propertiesFile = classLoader.getResourceAsStream(PROPERTIES_FILE);
 
-        if (propertiesFile == null) {
-            throw new DaoConfigurationException("properties file " + PROPERTIES_FILE + " not found.");
-        }
+//        if (propertiesFile == null) {
+//            throw new DaoConfigurationException("properties file " + PROPERTIES_FILE + " not found.");
+//        }
 
-        try {
-            properties.load(propertiesFile);
-            url = properties.getProperty(PROPERTY_URL);
-            driver = properties.getProperty(PROPERTY_DRIVER);
-            username = properties.getProperty(PROPERTY_USERNAME);
-            password = properties.getProperty(PROPERTY_PASSWORD);
-        } catch (IOException e) {
-            throw new DaoConfigurationException("properties file can't be loaded " + PROPERTIES_FILE, e);
-        }
+//        try {
+//            properties.load(propertiesFile);
+        url = "jdbc:mysql://localhost/Joffre";
+        driver = "com.mysql.jdbc.Driver";
+        username =  "administrateur";
+        password =  "administrateur";
+//        }
+//        catch (IOException e) {
+//            throw new DaoConfigurationException("properties file can't be loaded " + PROPERTIES_FILE , e);
+//        }
 
         try {
             Class.forName(driver);
