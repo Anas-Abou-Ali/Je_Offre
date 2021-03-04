@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.List;
 
-public class Offre implements Serializable {
+public class    Offre implements Serializable {
 
     private Long offerId;
     private String titre;

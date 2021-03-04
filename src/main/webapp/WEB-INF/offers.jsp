@@ -54,7 +54,6 @@
                                                         <div class="col-md-8">
                                                             <i class="far fa-heart fa-lg ml-0"></i>
                                                             <i class="fas fa-heart fa-lg ml-0"></i>
-                                                            <i class="far fa-comment fa-lg mx-2"></i>
                                                         </div>
                                                         <div class="col-md-4 text-right">
                                                             <i class="far fa-paper-plane fa-lg"></i>
@@ -71,8 +70,9 @@
                                                     <div class="row">
                                                         <div class="col-md-12 mt-1">
                                                             <p>
-                                                                <c:out value="${offer.titre} ${  status.count }"/>
-                                                                <strong class="text-dark"> <c:out value="${offer.userFirstName}"/> </strong> <c:out value="${offer.description}"/>
+                                                                <strong class="text-dark">
+                                                                    Description :
+                                                                </strong> <c:out value="${offer.description}"/>
                                                             </p>
                                                         </div>
 
