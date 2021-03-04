@@ -1,41 +1,41 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="index.jsp"> <img src="logo_don.jpg" class="rounded-circle" width="30" height="30" class="d-inline-block align-top" alt="Logo">J'offre.ma</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="../index.jsp">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="upload">Add Offre</a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Dropdown
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                </div>
-            </li>
-        </ul>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="index.jsp"> <img src="logo_don.jpg" class="rounded-circle" width="30" height="30" class="d-inline-block align-top" alt="Logo">J'offre.ma</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="../index.jsp">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="upload">Add Offre</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Dropdown
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </li>
+            </ul>
 
-        <c:choose>
-            <c:when test="${ !empty sessionScope.user}">
-                    <a href="profile"> <c:out value="${sessionScope.user.firstName}" /></a>
-                    <a type="button" class="btn btn-primary" href="login?logout=out" > Log out </a>
-            </c:when>
-            <c:otherwise>
-               <%-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#connexion" >Se connecter</button> --%>
-                <button type="button" class="btncnx" data-toggle="modal" data-target="#connexion" >Se connecter</button>
-            </c:otherwise>
-        </c:choose>
-    </div>
-</nav>
-
+            <c:choose>
+                <c:when test="${ !empty sessionScope.user }">
+                        <a href="profile"> <c:out value="${sessionScope.user.firstName}" /></a>
+                        <a type="button" class="btn btn-primary" href="login?logout=out" > Log out </a>
+                </c:when>
+                <c:otherwise>
+                   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#connexion" >Se connecter</button>
+                </c:otherwise>
+            </c:choose>
+        </div>
+    </nav>
+</header>
 <!-- Modal -->
 <div class="modal fade" id="connexion" tabindex="-1" role="dialog" aria-labelledby="connexionLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -49,10 +49,10 @@
             <div class="modal-body">
                     <div id="fb-root"></div>
                     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v9.0&appId=266620018232985&autoLogAppEvents=1" nonce="Z43c2Xq9"></script>
-                    <script src="js.js"></script>
+                    <script src="js/Oauth2.js"></script>
                     <div class="fb-login-button" data-width="" data-size="large" data-button-type="login_with" data-layout="default"
                          data-auto-logout-link="false" data-use-continue-as="true" onLogin="checkLoginState()"></div>
-                         <p> Bonjour <span id="name"></span> </p>
+                         <p> <span id="name"></span> </p>
                 <form method="POST" action="login">
                     <input type="text" id="username" name="username"  />
                     <input type="text" id="idUser" name="idUser"  />

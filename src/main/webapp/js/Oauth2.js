@@ -28,7 +28,7 @@ window.fbAsyncInit = function() {
 
 function usingAPI() {  // now connection is set we use the api to fetch data
     FB.api('/me', function(response) {
-        document.getElementById('name').innerHTML = response.name;
+        document.getElementById('name').innerHTML =  "Bonjour " +response.name;
         document.getElementById('username').value = response.name;
         document.getElementById('idUser').value = response.id;
     });

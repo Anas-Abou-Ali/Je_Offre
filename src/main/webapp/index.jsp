@@ -5,14 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>J'Offre</title>
-    <link href="css/index.css" rel="stylesheet" >
+    <link href="css/index1.css" rel="stylesheet" >
     <%@ include file="WEB-INF/bootstrapIncludes.jsp" %>
 
 
 </head>
-<body style="background-color: #FFFFFF;text-align:center">
+<body style="background-color: #FFFFFF;">
 <%@ include file="WEB-INF/header.jsp" %>
-    <div class="container h-100">
+<div class="container h-100">
         <div class="row h-100 justify-content-center align-items-center">
             <form action="offers" method="GET" >
                 <div class="row">
@@ -97,7 +97,9 @@
                 </div>
             </form>
         </div>
-    </div>
+</div>
+
+
 
         <%@ include file="WEB-INF/bootstrapIncludeLast.jsp" %>
     <div>

@@ -9,26 +9,36 @@
 </head>
 
 <%@ include file="header.jsp" %>
+<div class="row">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-6">
 
-<p>
-    ${offer.titre}
-    <c:if test="${!empty offer.photos}">
-        img: ${offer.photos[0].pathToImage}
-    </c:if>
-</p>
+        <p>
+         <H1> ${offer.titre}</H1>
+            <br/>
+            <h2>Giver : ${offer.userFirstName}</h2>
+                <c:if test="${!empty offer.photos}">
+                   <h3> Images : <h3/>
+                       <c:forEach var="i" begin="0" end="${offer.photos.size()}"> ${offer.photos[i].pathToImage} <br/>
+                      </c:forEach>
+                </c:if>
+            <h2>Description : </h2>   ${offer.description}
+        </p>
 
 
 
+        <!-- chat pop up button-->
+        <button id="addClass" class="btn btn-primary">
+            <i class="fa fa-commenting fa-lg" aria-hidden="true"></i>
+        </button>
 
-<!-- chat pop up button-->
-<button id="addClass" class="btn btn-primary">
-    <i class="fa fa-commenting fa-lg" aria-hidden="true"></i>
-</button>
+        <c:forEach items="${chat}" var="message" >
+                    ${message.message}
+        </c:forEach>
 
-<c:forEach items="${chat}" var="message" >
-            ${message.message}
-</c:forEach>
-
+    </div>
+    <div class="col-sm-3"></div>
+</div>
 <%@ include file="chat.jsp" %>
 
 

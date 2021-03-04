@@ -3,6 +3,7 @@
 *.settings
 /bin/*
 /target/*
+/out/*
 .mvn
 *.class
 *.jar
@@ -13,3 +14,5 @@
 *.rar
 .idea/
 *.iml
+
+src/main/webapp/WEB-INF/web.xml
