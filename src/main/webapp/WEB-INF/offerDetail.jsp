@@ -18,7 +18,7 @@
             <br/>
             <h2>Giver : ${offer.userFirstName}</h2>
                 <c:if test="${!empty offer.photos}">
-                   <h3> Images : <h3/>
+                   <h3> Images : </h3>
                        <c:forEach var="i" begin="0" end="${offer.photos.size()}"> ${offer.photos[i].pathToImage} <br/>
                       </c:forEach>
                 </c:if>
