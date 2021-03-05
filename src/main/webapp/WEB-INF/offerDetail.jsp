@@ -17,12 +17,12 @@
          <H1> ${offer.titre}</H1>
             <br/>
             <h2>Giver : ${offer.userFirstName}</h2>
-                <c:if test="${!empty offer.photos}">
-                   <h3> Images : </h3>
-                       <c:forEach var="i" begin="0" end="${offer.photos.size()}"> ${offer.photos[i].pathToImage} <br/>
-                      </c:forEach>
-                </c:if>
-            <h2>Description : </h2>   ${offer.description}
+        <c:if test="${!empty offer.photos}"> <img src="uploads/${offer.photos[0].getPathToImage()}" class="w-100" />
+            <a href="#!">
+                <div class="mask" style="background-color: rgba(251, 251, 251, 0.2)"></div>
+            </a>
+        </c:if>
+    <h2>Description : </h2>   ${offer.description}
         </p>
 
 

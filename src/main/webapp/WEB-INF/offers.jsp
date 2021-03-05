@@ -41,7 +41,7 @@
                                             <!--l'offre-->
                                             <div class="bg-image hover-overlay ripple shadow-1-strong rounded"
                                                  data-mdb-ripple-color="light">
-                                                <c:if test="${!empty offer.photos}"> <img src="${offer.photos[0].getPathToImage()}" class="w-100" />
+                                                <c:if test="${!empty offer.photos}"> <img src="uploads/${offer.photos[0].getPathToImage()}" class="w-100" />
                                                     <a href="#!">
                                                         <div class="mask" style="background-color: rgba(251, 251, 251, 0.2)"></div>
                                                     </a>

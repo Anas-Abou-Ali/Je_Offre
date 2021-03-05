@@ -49,7 +49,7 @@ public class OfferDetail extends HttpServlet {
             Messanger messanger = new Messanger();
             Offre offer = this.offers.get( Long.parseLong( offerId ) );
             
-            Image offerImage = this.images.getOneImgForOffer( Long.parseLong( offerId ) );
+            Image offerImage = this.images.getOneImgForOffer( offer.getOfferId() );
             List<Image> photos = new ArrayList<>();
             photos.add(offerImage);
             offer.setPhotos(photos);
@@ -77,7 +77,7 @@ public class OfferDetail extends HttpServlet {
 
         }else{
             Offre offer = this.offers.get( Long.parseLong( offerId ) );
-            Image offerImage = this.images.getOneImgForOffer( Long.parseLong( offerId ) );
+            Image offerImage = this.images.getOneImgForOffer( offer.getOfferId() );
             List<Image> photos = new ArrayList<>();
             photos.add(offerImage);
             offer.setPhotos(photos);
