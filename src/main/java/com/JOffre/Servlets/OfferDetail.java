@@ -17,11 +17,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import static com.JOffre.Model.SharedEnums.*;
+
 @WebServlet(value = "/offer")
 public class OfferDetail extends HttpServlet {
     private static final String ATT_DAO_FACTORY = "daofactory";
     private static final String ATT_OFFER       = "offer";
     private static final String ATT_CHAT        = "chat";
+    private static final String ATT_CITIES      = "City";
+    private static final String ATT_CATEGORIES  = "Category";
+
     private static final String GET_OFFER       = "off";
     private static final String VIEW            = "/WEB-INF/offerDetail.jsp";
     private static final String VIEW_RETURN     = "/index.jsp";
@@ -58,6 +63,8 @@ public class OfferDetail extends HttpServlet {
 
             request.setAttribute(ATT_CHAT, chat);
             request.setAttribute(ATT_OFFER, offer);
+            request.setAttribute(ATT_CITIES, City);
+            request.setAttribute(ATT_CATEGORIES ,Category);
 
             this.getServletContext().getRequestDispatcher( VIEW ).forward( request, response );
         }
@@ -89,6 +96,8 @@ public class OfferDetail extends HttpServlet {
 
                 request.setAttribute(ATT_CHAT, chat);
                 request.setAttribute(ATT_OFFER, offer);
+                request.setAttribute(ATT_CITIES, City);
+                request.setAttribute(ATT_CATEGORIES ,Category);
 
                 this.getServletContext().getRequestDispatcher( VIEW ).forward( request, response );
 

@@ -19,19 +19,32 @@
         <div class="wrapper row">
             <div class="preview col-md-6">
                 <div class="preview-pic tab-content">
-                    <div class="tab-pane active" id="pic-1"><img src="uploads/${offer.photos[0].getPathToImage()}" /></div>
+                    <div class="tab-pane active" id="pic-1">
+                        <c:if test="${!empty offer.photos}">
+                            <img src="uploads/${offer.photos[0].getPathToImage()}" />
+                        </c:if>
+                    </div>
                 </div>
             </div>
             <div class="details col-md-6">
                 <h3 class="product-title">${offer.titre}</h3>
                 <div class="rating">
-                    <span class="review-no">par : ${offer.userFirstName}</span>
+                    <span class="review-no"><i class="fa fa-user">   ${offer.userFirstName}</i> </span>
                 </div>
                 <p class="product-description">${offer.description}</p>
-                <p class="vote"><strong>91%</strong> of buyers enjoyed this product! <strong>(87 votes)</strong></p>
-
-                <div class="action">
-                    <button class="add-to-cart btn btn-default" type="button">ajouter à ma list de suivi</button>
+                <p class="vote" style="margin-top: 10px;">
+                    <i class="fa fa-clock-o" aria-hidden="true">  <fmt:formatDate value="${offer.date}" pattern="dd/MM/yyyy HH:mm"/></i>
+                </p>
+                <div class="vote">
+                    <i class="fa fa-street-view" aria-hidden="true"> ${City[offer.city]} </i>
+                    <span style="margin-left: 10px;"></span>
+                    <i class="fa fa-tag" aria-hidden="true"> ${Category[offer.category]} </i>
+                </div>
+                <button id="addClass" class="btn btn-primary">
+                    <i class="fa fa-commenting fa-lg" aria-hidden="true"></i>
+                </button>
+                <div class="action" style="margin-top: 10px;">
+                    <button class="add-to-cart btn btn-default" type="button">ajouter à ma liste de suivi</button>
                     <button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>
                 </div>
             </div>
@@ -71,6 +84,9 @@
 <%--    </div>--%>
 <%--    <div class="col-sm-3"></div>--%>
 <%--</div>--%>
+
+
+<!-- chat pop up button-->
 
 
 

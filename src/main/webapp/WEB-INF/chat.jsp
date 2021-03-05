@@ -18,6 +18,11 @@
                 <div class="direct-chat-info clearfix">
                     <span class="direct-chat-timestamp pull-right">3.36 PM</span>
                 </div>
+                <c:forEach items="${chat}" var="message" >
+                    <div class="direct-chat-text">
+                            ${message.message}
+                    </div>
+                </c:forEach>
 
 
         </div>
