@@ -7,24 +7,15 @@
         </div>
     </div>
     <div class="popup-messages">
-
         <div class="direct-chat-messages">
-
-            <!-- Message. Default to the left -->
-                <!-- /.direct-chat-info -->
-                <div class="direct-chat-text">
-                    Hey bro, how’s everything going ?
-                </div>
-                <div class="direct-chat-info clearfix">
-                    <span class="direct-chat-timestamp pull-right">3.36 PM</span>
-                </div>
                 <c:forEach items="${chat}" var="message" >
                     <div class="direct-chat-text">
                             ${message.message}
                     </div>
+                    <div class="direct-chat-info clearfix">
+                        <span class="direct-chat-timestamp pull-right">3.36 PM</span>
+                    </div>
                 </c:forEach>
-
-
         </div>
     </div>
     <div class="popup-messages-footer">
