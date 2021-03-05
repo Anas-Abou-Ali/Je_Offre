@@ -12,6 +12,12 @@
 </head>
 <body style="background-color: #FFFFFF;">
 <%@ include file="WEB-INF/header.jsp" %>
+<div class="jumbotron jumbotron-fluid" style="background-image: url('css/bg.jpg');background-size: cover;background-repeat: no-repeat;">
+    <div class="container">
+        <h1 class="display-4">J'offre :</h1>
+        <p class="lead" style="color: white"> De même que le fleuve retourne à la mer, le don de l'homme revient vers lui. </p>
+    </div>
+</div>
 <div class="container h-100">
         <div class="row h-100 justify-content-center align-items-center">
             <form action="offers" method="GET" >
