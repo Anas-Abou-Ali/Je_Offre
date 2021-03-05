@@ -299,3 +299,12 @@
     padding: 5px 10px;
     position: relative;
 }
+
+.btn-sendmessage{
+    width: 100%;
+    display: block;
+}
+.message-text{
+    width: 100%;
+    height: 20%;
+}

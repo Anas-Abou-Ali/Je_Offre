@@ -17,8 +17,8 @@ insert into Messages(sender_id_user, idUser, message ) values('0002', '323691412
 
 /*=======================offerId, idUser,title ,description, city, category====================*/
 delete from Offer;
-insert into Offer(offerId, idUser,title, description,city, category) values(1, "user01", "smartphone bon état", "galaxy S2 si quelqu'un interessé", 1, 3);
-insert into Offer(offerId, idUser,title, description,city, category) values(2, "user01", "pc bon état", "Pc hp dual core si quelqu'un interessé 06000000", 2, 3);
+insert into Offer(offerId, idUser,title, description,city, category) values(1, "0001", "smartphone bon état", "galaxy S2 si quelqu'un interessé", 1, 3);
+insert into Offer(offerId, idUser,title, description,city, category) values(2, "0001", "pc bon état", "Pc hp dual core si quelqu'un interessé 06000000", 2, 3);
 insert into Offer(offerId, idUser,title, description,city, category) values(3, "3236914126410485", "vêtement pour enfant", "une chemise et pantalon pour un enfant age de 6 ans veuillez me contacter si vous êtes interessés", 3, 2);
 insert into Offer(offerId, idUser,title, description,city, category) values(4, "3236914126410485", "bicyclette", "bicyclette pour un adult demande un peu de maintenace mais bon c'etait ma propre bicyclette quelqu'un me contacter ce week-end", 1, 5);
 

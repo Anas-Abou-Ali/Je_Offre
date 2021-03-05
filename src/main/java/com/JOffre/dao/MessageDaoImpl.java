@@ -84,7 +84,6 @@ public class MessageDaoImpl implements IMessageDao {
     public List<User> getDemandersList(String idUser) throws DaoException {
         List<User> demanders = new LinkedList<>();
         ResultSet resultSet = null;
-        User tempUser = new User();
 
         try {
             connection = daoFactory.getConnection();
@@ -92,6 +91,7 @@ public class MessageDaoImpl implements IMessageDao {
             resultSet = preparedStatement.executeQuery();
 
             while ( resultSet.next() ) {
+                User tempUser = new User();
                 tempUser.setIdUser( resultSet.getString("sender_id_user" ) );
                 tempUser.setFirstName( resultSet.getString("firstName" ) );
                 demanders.add( tempUser );
