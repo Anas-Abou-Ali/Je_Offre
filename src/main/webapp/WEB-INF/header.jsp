@@ -1,38 +1,36 @@
 <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="index.jsp"> <img src="logo_don.jpg" class="rounded-circle" width="30" height="30" class="d-inline-block align-top" alt="Logo">J'offre.ma</a>
+        <a class="navbar-brand" style="margin-left: 30px;" href="index.jsp"> <img src="logo_don.jpg" class="rounded-circle" width="30" height="30" class="d-inline-block align-top" alt="Logo">J'offre.ma</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="../index.jsp">Home <span class="sr-only">(current)</span></a>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item" style="margin-right:30px;">
+                    <a class="nav-link" href="upload"><i class="fa fa-plus" aria-hidden="true"></i> Proposer un offre </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="upload">Add Offre</a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Dropdown
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                </li>
+                <c:choose>
+                    <c:when test="${ !empty sessionScope.user }">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fa fa-user" aria-hidden="true">  <c:out value="${sessionScope.user.firstName}" /> </i>
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a href="profile" class="dropdown-item"> profile </a>
+                                <div class="dropdown-divider"></div>
+                                <a type="button" class="dropdown-item" href="login?logout=out" > Log out </a>
+                            </div>
+                        </li>
+                    </c:when>
+                    <c:otherwise>
+                        <li class="nav-item">
+                            <button type="button" class="btn btn-default btn-circle btn-outline" data-toggle="modal" data-target="#connexion" >Se connecter</button>
+                        </li>
+                    </c:otherwise>
+                </c:choose>
             </ul>
-
-            <c:choose>
-                <c:when test="${ !empty sessionScope.user }">
-                        <a href="profile"> <c:out value="${sessionScope.user.firstName}" /></a>
-                        <a type="button" class="btn btn-primary" href="login?logout=out" > Log out </a>
-                </c:when>
-                <c:otherwise>
-                   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#connexion" >Se connecter</button>
-                </c:otherwise>
-            </c:choose>
         </div>
     </nav>
 </header>
