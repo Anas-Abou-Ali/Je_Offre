@@ -4,15 +4,11 @@
     <meta charset="UTF-8">
     <title>J'Offre.ma</title>
     <%@ include file="bootstrapIncludes.jsp" %>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"  rel="stylesheet" />
 </head>
-    <body>
+<body>
         <%@ include file="header.jsp" %>
-
                 <main>
                     <div class="container my-5">
-
                         <div class="row">
                             <div class="col-md-1"></div>
                             <div class="col-md-7">
@@ -52,11 +48,11 @@
                                                 <div class="container">
                                                     <div class="row">
                                                         <div class="col-md-8">
-                                                            <i class="far fa-heart fa-lg ml-0"></i>
-                                                            <i class="fas fa-heart fa-lg ml-0"></i>
+                                                            <i class="fa fa-heart fa-lg ml-0"></i>
+                                                            <i class="fa fa-heart fa-lg ml-0"></i>
                                                         </div>
                                                         <div class="col-md-4 text-right">
-                                                            <i class="far fa-paper-plane fa-lg"></i>
+                                                            <i class="fa fa-paper-plane fa-lg"></i>
                                                         </div>
                                                     </div>
                                                     <!-- Liked by -->
@@ -100,23 +96,18 @@
                                 </section>
                                 </c:forEach>
                             </div>
-                            <div class="col-md-2"></div>
+                            <div class="col-md-2 mt-40">
+                                <table width="275"  border="3" cellpadding="3" bordercolor="darkorange">
+                                    <td><div align="center"></div></td>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </main>
-
-
-
-        <p>${test}
-        </p>
-
-
-
-
         <%@ include file="bootstrapIncludeLast.jsp" %>
         <div>
             <%@ include file="footer.jsp" %>
         </div>
 
-    </body>
+</body>
 </html>
