@@ -56,17 +56,6 @@ public class OfferFormUpload {
         Integer category    = Integer.parseInt( getFieldValue( request, FIELD_CATEGORY ) );
         User user = (User) request.getSession().getAttribute( ATT_SESSION_USER );
 
-        //String c = getFieldValue( request, FIELD_CATEGORY ),cc =getFieldValue( request, FIELD_CITY );
-
-        /*
-            Category category  = Category.valueOf( c );
-            City   city        = City.valueOf(  cc);
-            offer.setCategory(category);
-            offer.setCity(city);
-*/
-
-        //need userId and images
-
 
         //getting the file field using getPart
         String fileName = null;
@@ -136,12 +125,11 @@ public class OfferFormUpload {
             }
 
 
-
-//            try {
-//                validateFile( fileName, fileContent );
-//            } catch ( Exception e ) {
-//                setError( FIELD_FILE, e.getMessage() );
-//            }
+            try {
+                validateFile( fileName, fileContent );
+            } catch ( Exception e ) {
+                setError( FIELD_FILE, e.getMessage() );
+            }
 
             if(fileContent != null)
             image.setPathToImage( random_java8_string(RANDOM_FILENAME_LEN) + fileName);

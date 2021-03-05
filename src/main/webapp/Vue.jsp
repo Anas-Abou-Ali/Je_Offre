@@ -27,7 +27,7 @@
 
     <div id="page_container" class="container">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#"> <img src="logo_don.jpg" class="rounded-circle" width="30" height="30" class="d-inline-block align-top" alt="Logo">J'offre.ma</a>
+            <a class="navbar-brand" href="#"> <img src="css/logo_don.jpg" class="rounded-circle" width="30" height="30" class="d-inline-block align-top" alt="Logo">J'offre.ma</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -77,7 +77,7 @@
                                         <div class="row">
                                             <div class="col-md-8">
                                                 <div class="d-flex story">
-                                                    <img href="/Anas_Abou_Ali" src="logo_don.jpg" class="rounded-circle" width="40" height="40" alt="Avatar"/>
+                                                    <img href="/Anas_Abou_Ali" src="css/logo_don.jpg" class="rounded-circle" width="40" height="40" alt="Avatar"/>
                                                     <div class="md-2">
                                                         <a href="/Anas_Abou_Ali">
                                                             <strong class="mt-5 ml-2">Anas_Abou_Ali</strong>
@@ -113,7 +113,7 @@
                                         <!-- Liked by -->
                                         <div class="row">
                                             <div class="col-md-8 mt-1">
-                                                <img href="/Anas_Abou_Ali" src="logo_don.jpg" class="rounded-circle" width="20" height="20" alt="Avatar"/>
+                                                <img href="/Anas_Abou_Ali" src="css/logo_don.jpg" class="rounded-circle" width="20" height="20" alt="Avatar"/>
                                                 <small>Aimee par <strong>4232 </strong>people</small>
                                             </div>
                                         </div>
