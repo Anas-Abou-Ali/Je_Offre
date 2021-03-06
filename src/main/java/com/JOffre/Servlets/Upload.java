@@ -66,7 +66,6 @@ public class Upload extends HttpServlet {
         //getting the path to where to store images path configuration from configuration and web.xml
         String path = getServletContext().getRealPath("/uploads");
 
-        String test = request.getParameter("description");
         //init a metier that handle the comming offer form
         OfferFormUpload offerFormUploader = new OfferFormUpload();
 
@@ -89,7 +88,6 @@ public class Upload extends HttpServlet {
             request.setAttribute("form", offerFormUploader);
             request.setAttribute("offer", offer);
             request.setAttribute("City", City);
-            request.setAttribute("test", test);
             request.setAttribute("Category", Category);
             this.getServletContext().getRequestDispatcher( VIEW ).forward( request, response );
         }

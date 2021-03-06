@@ -22,7 +22,7 @@ public class Profile extends HttpServlet {
     private static final String ATT_DEMANDERS    = "demanders";
     private static final String VIEW             = "/WEB-INF/profile.jsp";
     private static final String ATT_SESSION_USER = "user";
-    private static final String GET_DEMANDER     = "idDemander";
+    private static final String GET_DEMANDER     = "id";
     private IUserDao users                       = null;
     private IFavoriteDao favorites               = null;
     private IMessageDao  messages                = null;
@@ -39,7 +39,7 @@ public class Profile extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        String demanderId = request.getParameter( "id" );
+        String demanderId = request.getParameter( GET_DEMANDER );
 
         //getting user from the session
         User user = (User) request.getSession().getAttribute( ATT_SESSION_USER );
@@ -82,45 +82,6 @@ public class Profile extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String demanderId = request.getParameter( GET_DEMANDER );
 
-        response.sendRedirect( request.getContextPath() + "/profile?id="+demanderId );
-
-
-
-//        String demanderId = request.getParameter( GET_DEMANDER );
-//
-//        //getting user from the session
-//        User user = (User) request.getSession().getAttribute( ATT_SESSION_USER );
-//
-//        //populating user with its offers and its favorites
-//        user.setOffers( this.favorites.getMyOffers( user.getIdUser() ) );
-//        user.setFavorites( this.favorites.get( user.getIdUser() ) );
-//
-//        for(Offre offer :user.getOffers()){
-//            Image offerImage = this.images.getOneImgForOffer( offer.getOfferId() );
-//            List<Image> photos = new ArrayList<>();
-//            photos.add(offerImage);
-//            offer.setPhotos(photos);
-//        }
-//        for(Offre offer :user.getFavorites() ){
-//            Image offerImage = this.images.getOneImgForOffer( offer.getOfferId() );
-//            List<Image> photos = new ArrayList<>();
-//            photos.add(offerImage);
-//            offer.setPhotos(photos);
-//        }
-//
-//        //getting list of demnaders
-//        Messanger messanger = new Messanger();
-//        List<User>  demanders = messanger.getDemanders( request, this.messages );
-//
-//        //getting messages with the selected demander
-//        List<Message> chat  = messanger.receive(request, messages, demanderId );
-//
-//        request.setAttribute(ATT_CHAT, chat);
-//        request.setAttribute(ATT_DEMANDERS, demanders);
-//        request.setAttribute(ATT_USER, user);
-//
-//        this.getServletContext().getRequestDispatcher( VIEW ).forward( request, response );
     }
 }
