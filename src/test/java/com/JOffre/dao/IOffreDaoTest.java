@@ -3,13 +3,10 @@ package com.JOffre.dao;
 import com.JOffre.Model.Offre;
 import org.junit.jupiter.api.*;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.text.MessageFormat;
 import java.time.Duration;
 import java.time.Instant;
 
-import com.JOffre.daoUtil.*;
 
 import static com.JOffre.daoUtil.Util.closeResources;
 import static org.junit.jupiter.api.Assertions.*;
@@ -19,8 +16,6 @@ class IOffreDaoTest {
     private DaoFactory factory;
     private IOffreDao offers;
     private Offre offer                 = null;
-    Connection connection               = null;
-    PreparedStatement preparedStatement = null;
 
 
     @BeforeAll
@@ -41,20 +36,12 @@ class IOffreDaoTest {
     void setUp(){
         this.factory = DaoFactory.getFactory();
         this.offers = this.factory.getOfferDao();
-        try {
-            this.connection = this.factory.getConnection();
-        }catch (Exception e){
-            fail();
-            closeResources( this.connection );
-        }
     }
 
     @AfterEach
     void tearDown() {
         this.factory = null;
         this.offers = null;
-        closeResources( this.connection );
-
     }
 
     @Test
@@ -75,6 +62,7 @@ class IOffreDaoTest {
 
         System.out.println("deleting test offer");
         this.offers.delete( this.offer.getOfferId() );
+        assertNull( this.offers.get( this.offer.getOfferId()) );
     }
 
 

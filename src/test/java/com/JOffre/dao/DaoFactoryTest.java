@@ -2,15 +2,18 @@ package com.JOffre.dao;
 
 import org.junit.jupiter.api.*;
 
+import java.sql.Connection;
 import java.text.MessageFormat;
 import java.time.Duration;
 import java.time.Instant;
 
+import static com.JOffre.daoUtil.Util.closeResources;
 import static org.junit.jupiter.api.Assertions.*;
 
 class DaoFactoryTest {
     private static Instant startedAt;
     private DaoFactory factory;
+    private Connection connection               = null;
 
 
     @BeforeAll
@@ -63,4 +66,16 @@ class DaoFactoryTest {
     void getFavoriteDao() {
         assertNotNull( factory.getFavoriteDao() );
     }
+
+    @Test
+    void connextionTest(){
+        try {
+            this.connection = this.factory.getConnection();
+        }catch (Exception e){
+            fail();
+        }finally {
+            closeResources( this.connection );
+        }
+    }
+
 }
