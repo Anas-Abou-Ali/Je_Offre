@@ -103,8 +103,6 @@
                                 </div>
                             </a>
                         </c:forEach>
-
-
                     </div>
                 </div>
             </div>
@@ -112,36 +110,32 @@
         <!-- Chat Box-->
         <div class="col-7 px-0">
             <div class="px-4 py-5 chat-box bg-white">
-                <!-- Sender Message-->
-                <div class="media w-50 mb-3"><img src="https://res.cloudinary.com/mhmd/image/upload/v1564960395/avatar_usae7z.svg" alt="user" width="50" class="rounded-circle">
-                    <div class="media-body ml-3">
-                        <div class="bg-light rounded py-2 px-3 mb-2">
-                            <p class="text-small mb-0 text-muted">Test which is a new approach all solutions</p>
-                        </div>
-                        <p class="small text-muted">12:00 PM | Aug 13</p>
-                    </div>
-                </div>
-
-                <!-- Reciever Message-->
-                <div class="media w-50 ml-auto mb-3">
-                    <div class="media-body">
-                        <div class="bg-primary rounded py-2 px-3 mb-2">
-                            <p class="text-small mb-0 text-white">Test which is a new approach to have all solutions</p>
-                        </div>
-                        <p class="small text-muted">12:00 PM | Aug 13</p>
-                    </div>
-                </div>
-
                 <c:forEach items="${chat}" var="mess">
-                    <!-- Reciever Message-->
-                    <div class="media w-50 ml-auto mb-3">
-                        <div class="media-body">
-                            <div class="bg-primary rounded py-2 px-3 mb-2">
-                                <p class="text-small mb-0 text-white">${mess.message}</p>
+                    <c:choose>
+                        <c:when test="${mess.receiverId == user.idUser}">
+                            <!-- Reciever Message-->
+                            <div class="media w-50 ml-auto mb-3">
+                                <div class="media-body">
+                                    <div class="bg-primary rounded py-2 px-3 mb-2">
+                                        <p class="text-small mb-0 text-white">${mess.message}</p>
+                                    </div>
+                                    <p class="small text-muted"><fmt:formatDate value="${mess.dateMessage}" pattern="HH:mm | dd/MM"/></p>
+                                </div>
                             </div>
-                            <p class="small text-muted"><fmt:formatDate value="${mess.dateMessage}" pattern="dd/MM/yyyy HH:mm"/></p>
-                        </div>
-                    </div>
+                        </c:when>
+                        <c:otherwise>
+                            <!-- Sender Message-->
+                            <div class="media w-50 mb-3"><img src="https://res.cloudinary.com/mhmd/image/upload/v1564960395/avatar_usae7z.svg" alt="user" width="50" class="rounded-circle">
+                                <div class="media-body ml-3">
+                                    <div class="bg-light rounded py-2 px-3 mb-2">
+                                        <p class="text-small mb-0 text-muted">${mess.message}</p>
+                                    </div>
+                                    <p class="small text-muted"><fmt:formatDate value="${mess.dateMessage}" pattern="HH:mm | dd/MM"/></p>
+                                </div>
+                            </div>
+                        </c:otherwise>
+                    </c:choose>
+
                 </c:forEach>
             </div>
 
@@ -154,6 +148,11 @@
                     </div>
                 </div>
             </form>
+<%--            <form action="offer?off=${offer.offerId}" method="POST">--%>
+<%--                <input name="offerOwner" id="offerOwner" type="hidden" value="${offer.idUser}"/>--%>
+<%--                <textarea class="message-text" id="status_message" placeholder="message..." name="message"></textarea>--%>
+<%--                <button class="btn btn-primary btn-sendmessage" type="submit"><i class="fa fa-paper-plane fa-sm"></i> </button>--%>
+<%--            </form>--%>
 
         </div>
     </div>
