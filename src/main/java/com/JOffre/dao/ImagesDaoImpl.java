@@ -89,9 +89,9 @@ public class ImagesDaoImpl implements IImagesDao {
             preparedStatement = initPreparedStatement( connection, SQL_DELETE, false, id );
 
             int status = preparedStatement.executeUpdate();
-            if ( status == 0 ) {
-                throw new DaoException( "cannot delete an image" );
-            }
+//            if ( status == 0 ) {
+//                throw new DaoException( "cannot delete an image" );
+//            }
 
         } catch(SQLException e){
             throw new DaoException(e);

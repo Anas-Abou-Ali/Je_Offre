@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <title>Title</title>
     <link href="css/upload.css" rel="stylesheet" >
     <%@ include file="bootstrapIncludes.jsp" %>
@@ -14,7 +14,7 @@
         <div class="col-sm-3"></div>
         <div class="col-sm-6">
     <section >
-    <form action="<c:url value="/upload" />" method="post" enctype="multipart/form-data">
+    <form action="<c:url value="/upload" />" method="post" enctype="multipart/form-data" >
             <fieldset>
                 <legend>Publier une Offre</legend>
                 <div class="form-group ">
@@ -27,7 +27,7 @@
 
                 <div class="form-group ">
                     <label for="description">Description d'offre</label>
-                    <textarea type="text"  class="form-control"  id="description" placeholder="Description" rows="3" name="description" value="<c:out value="${offer.description}" />"></textarea>
+                    <textarea type="text"  class="form-control"  id="description" placeholder="Description" rows="3" name="description" ><c:out value="${offer.description}" /></textarea>
                     <span class="erreur">${form.errors['description']}</span>
                     <br />
                 </div>
@@ -69,6 +69,8 @@
         </div>
         <div class="col-sm-3"></div>
     </div>
+
+    <p>${test}</p>
 
 </div>
 <%@ include file="bootstrapIncludeLast.jsp" %>

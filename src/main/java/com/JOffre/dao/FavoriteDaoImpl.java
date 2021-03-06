@@ -132,9 +132,9 @@ public class FavoriteDaoImpl implements IFavoriteDao {
             preparedStatement = initPreparedStatement( connection, SQL_DELETE_ENTRIES, false, offerId);
 
             int status = preparedStatement.executeUpdate();
-            if ( status == 0 ) {
-                throw new DaoException( "cannot delete favorite entries" );
-            }
+      //      if ( status == 0 ) {
+      //          throw new DaoException( "cannot delete favorite entries" );
+      //       }
 
         } catch(SQLException e){
             throw new DaoException(e);

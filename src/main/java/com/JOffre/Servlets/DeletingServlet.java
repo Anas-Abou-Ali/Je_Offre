@@ -9,7 +9,8 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
-
+import java.util.ArrayList;
+import java.util.List;
 
 
 @WebServlet(value = "/rem")
@@ -53,11 +54,17 @@ public class DeletingServlet extends HttpServlet {
         }else if(myOfferId != null && myOfferId.trim().length() != 0 && user != null){
             //case my offer: We delete images of the offer, favorites entries (links to people who liked the offer ) and then delete the offer
             Offre offer = this.offers.get( Long.parseLong( myOfferId ));
+
+            List<Image> photos = this.images.getAll( offer.getOfferId() );
+            offer.setPhotos(photos);
+
+
             if( offer != null && offer.getIdUser().equals( user.getIdUser() ) ){
-                for( Image im: offer.getPhotos() )
-                    this.images.delete( Long.parseLong( myOfferId ) );
 
                 this.favorites.deleteOfferEntries( Long.parseLong( myOfferId ) );
+
+                for( Image im : offer.getPhotos() )
+                    this.images.delete( Long.parseLong( myOfferId ) );
 
                 this.offers.delete( Long.parseLong(myOfferId) );
             }
