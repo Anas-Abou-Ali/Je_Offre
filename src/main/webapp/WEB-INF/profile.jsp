@@ -148,11 +148,11 @@
                     </div>
                 </div>
             </form>
-<%--            <form action="offer?off=${offer.offerId}" method="POST">--%>
-<%--                <input name="offerOwner" id="offerOwner" type="hidden" value="${offer.idUser}"/>--%>
-<%--                <textarea class="message-text" id="status_message" placeholder="message..." name="message"></textarea>--%>
-<%--                <button class="btn btn-primary btn-sendmessage" type="submit"><i class="fa fa-paper-plane fa-sm"></i> </button>--%>
-<%--            </form>--%>
+            <form action="profile" method="POST">
+                <input name="demander" id="demander" type="hidden" value="${offerDemanderId}"/>
+                <textarea class="message-text" id="status_message" placeholder="message..." name="message"></textarea>
+                <button class="btn btn-primary btn-sendmessage" type="submit"><i class="fa fa-paper-plane fa-sm"></i> </button>
+            </form>
 
         </div>
     </div>

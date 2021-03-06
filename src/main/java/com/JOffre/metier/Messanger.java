@@ -14,6 +14,7 @@ import java.util.Map;
 public class Messanger {
     private static final String ATT_SESSION_USER  = "user";
     private static final String FIELD_OFFER_OWNER = "offerOwner";
+    private static final String FIELD_DEMANDER    = "demander";
     private static final String FIELD_MESSAGE     = "message";
 
     private Map<String, String> errors            = new HashMap<String, String>();
@@ -47,6 +48,25 @@ public class Messanger {
         return message;
     }
 
+    public Message respondToDemander(HttpServletRequest request, IMessageDao messages){
+        Message message = new Message();
+
+        try{
+            User user = (User) request.getSession().getAttribute( ATT_SESSION_USER );
+            message.setReceiverId( request.getParameter( FIELD_DEMANDER ) );
+            message.setSenderId( user.getIdUser() );
+            message.setMessage( request.getParameter( FIELD_MESSAGE ) );
+        }catch (Exception e){
+            setError(FIELD_MESSAGE, "authentication error error ");
+        }
+        try{
+            message = messages.create(message);
+        }catch (DaoException e){
+            setError( FIELD_MESSAGE, "message creation error");
+        }
+        return message;
+    }
+
     public List<Message> receive(HttpServletRequest request, IMessageDao messageDao, String offerOwnerId ){
 
         List<Message> messages = null;
@@ -61,6 +81,7 @@ public class Messanger {
 
         return messages;
     }
+
 
     public List<User> getDemanders(HttpServletRequest request, IMessageDao messageDao ){
         List<User> demanders = null;

@@ -77,31 +77,7 @@ public class OfferDetail extends HttpServlet {
         Messanger messanger = new Messanger();
         messanger.sendMessage(request, messages);
 
+        response.sendRedirect( request.getContextPath() + "/offer?off="+ offerId);
 
-        if( offerId == null || offerId.trim().length() == 0){
-
-            response.sendRedirect( request.getContextPath() + VIEW_RETURN );
-
-        }else{
-            Offre offer = this.offers.get( Long.parseLong( offerId ) );
-            if(offer == null ) response.sendRedirect( request.getContextPath() + VIEW_RETURN );
-            else{
-                Image offerImage = this.images.getOneImgForOffer( offer.getOfferId() );
-                List<Image> photos = new ArrayList<>();
-                photos.add(offerImage);
-                offer.setPhotos(photos);
-
-                List<Message> chat  = messanger.receive(request, messages, offer.getIdUser() );
-
-
-                request.setAttribute(ATT_CHAT, chat);
-                request.setAttribute(ATT_OFFER, offer);
-                request.setAttribute(ATT_CITIES, City);
-                request.setAttribute(ATT_CATEGORIES ,Category);
-
-                this.getServletContext().getRequestDispatcher( VIEW ).forward( request, response );
-
-            }
-          }
     }
 }

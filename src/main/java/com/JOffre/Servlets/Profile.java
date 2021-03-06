@@ -20,6 +20,7 @@ public class Profile extends HttpServlet {
     private static final String ATT_USER         = "user";
     private static final String ATT_CHAT         = "chat";
     private static final String ATT_DEMANDERS    = "demanders";
+    private static final String ATT_DEMANDER     = "offerDemanderId";
     private static final String VIEW             = "/WEB-INF/profile.jsp";
     private static final String ATT_SESSION_USER = "user";
     private static final String GET_DEMANDER     = "id";
@@ -70,6 +71,9 @@ public class Profile extends HttpServlet {
             //getting messages with the selected demander
             List<Message> chat  = messanger.receive(request, messages, demanderId );
             request.setAttribute(ATT_CHAT, chat);
+            request.setAttribute(ATT_DEMANDER, demanderId);
+
+
 
         }
 
@@ -83,5 +87,9 @@ public class Profile extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        Messanger messanger = new Messanger();
+        messanger.respondToDemander(request, messages);
+
+        response.sendRedirect( request.getContextPath() + "/profile" );
     }
 }
