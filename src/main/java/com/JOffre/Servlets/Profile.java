@@ -12,6 +12,8 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 @WebServlet(value = "/profile")
@@ -66,14 +68,17 @@ public class Profile extends HttpServlet {
         //getting list of demnaders
         Messanger messanger = new Messanger();
         List<User>  demanders = messanger.getDemanders( request, this.messages );
+        if(demanders != null)
+            Collections.reverse( demanders );
+
 
         if(demanderId != null && demanderId.trim().length() != 0){
             //getting messages with the selected demander
             List<Message> chat  = messanger.receive(request, messages, demanderId );
+            if(chat != null)
+                Collections.reverse( chat );
             request.setAttribute(ATT_CHAT, chat);
             request.setAttribute(ATT_DEMANDER, demanderId);
-
-
 
         }
 
@@ -86,10 +91,11 @@ public class Profile extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String demanderId = request.getParameter( GET_DEMANDER );
 
         Messanger messanger = new Messanger();
         messanger.respondToDemander(request, messages);
 
-        response.sendRedirect( request.getContextPath() + "/profile" );
+        response.sendRedirect( request.getContextPath() + "/profile?id=" + demanderId );
     }
 }

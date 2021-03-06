@@ -85,7 +85,7 @@
                             <div class="media">
                                 <div class="media-body ml-4">
                                     <div class="d-flex align-items-center justify-content-between mb-1">
-                                        <h6 class="mb-0">Jason Doe</h6><small class="small font-weight-bold">25 Dec</small>
+                                        <h6 class="mb-0">Default user</h6><small class="small font-weight-bold">25 Dec</small>
                                     </div>
                                     <p class="font-italic mb-0 text-small">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
                                 </div>
@@ -112,7 +112,7 @@
             <div class="px-4 py-5 chat-box bg-white">
                 <c:forEach items="${chat}" var="mess">
                     <c:choose>
-                        <c:when test="${mess.receiverId == user.idUser}">
+                        <c:when test="${mess.senderId == user.idUser}">
                             <!-- Reciever Message-->
                             <div class="media w-50 ml-auto mb-3">
                                 <div class="media-body">
@@ -140,18 +140,14 @@
             </div>
 
             <!-- Typing area -->
-            <form action="#" class="bg-light">
+            <form action="profile?id=${offerDemanderId}" method="POST" class="bg-light">
                 <div class="input-group">
-                    <input type="text" placeholder="Type a message" aria-describedby="button-addon2" class="form-control rounded-0 border-0 py-4 bg-light">
+                    <input name="demander" id="demander" type="hidden" value="${offerDemanderId}"/>
+                    <input name="message" id="message" type="text" placeholder="Type a message" aria-describedby="button-addon2" class="form-control rounded-0 border-0 py-4 bg-light">
                     <div class="input-group-append">
                         <button id="button-addon2" type="submit" class="btn btn-link"> <i class="fa fa-paper-plane"></i></button>
                     </div>
                 </div>
-            </form>
-            <form action="profile" method="POST">
-                <input name="demander" id="demander" type="hidden" value="${offerDemanderId}"/>
-                <textarea class="message-text" id="status_message" placeholder="message..." name="message"></textarea>
-                <button class="btn btn-primary btn-sendmessage" type="submit"><i class="fa fa-paper-plane fa-sm"></i> </button>
             </form>
 
         </div>

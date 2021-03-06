@@ -9,12 +9,24 @@
     <div class="popup-messages">
         <div class="direct-chat-messages">
                 <c:forEach items="${chat}" var="message" >
-                    <div class="direct-chat-text">
-                            ${message.message}
-                    </div>
-                    <div class="direct-chat-info clearfix">
-                        <span class="direct-chat-timestamp pull-right">3.36 PM</span>
-                    </div>
+                    <c:choose>
+                        <c:when test="${message.senderId != sessionScope.user.idUser}">
+                            <div class="direct-chat-text send-receive-margin-left">
+                                    ${message.message}
+                            </div>
+                            <div class="direct-chat-info clearfix">
+                                <span class="direct-chat-timestamp pull-right">3.36 PM</span>
+                            </div>
+                        </c:when>
+                        <c:otherwise>
+                            <div class="direct-chat-text send-receive-margin-right">
+                                    ${message.message}
+                            </div>
+                            <div class="direct-chat-info clearfix">
+                                <span class="direct-chat-timestamp pull-right">3.36 PM</span>
+                            </div>
+                        </c:otherwise>
+                    </c:choose>
                 </c:forEach>
         </div>
     </div>

@@ -14,6 +14,7 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -60,8 +61,10 @@ public class OfferDetail extends HttpServlet {
             offer.setPhotos(photos);
 
             List<Message> chat  = messanger.receive(request, this.messages, offer.getIdUser() );
-
+            if(chat != null)
+                Collections.reverse( chat );
             request.setAttribute(ATT_CHAT, chat);
+
             request.setAttribute(ATT_OFFER, offer);
             request.setAttribute(ATT_CITIES, City);
             request.setAttribute(ATT_CATEGORIES ,Category);
