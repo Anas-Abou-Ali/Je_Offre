@@ -27,8 +27,7 @@
 
                 <div class="form-group ">
                     <label for="description">Description d'offre</label>
-                    <textarea type="text"  class="form-control"  id="description" placeholder="Description" rows="3" name="description" value="<c:out value="${offer.description}" />" >
-                    </textarea>
+                    <textarea type="text"  class="form-control"  id="description" placeholder="Description" rows="3" name="description" value="<c:out value="${offer.description}" />"></textarea>
                     <span class="erreur">${form.errors['description']}</span>
                     <br />
                 </div>

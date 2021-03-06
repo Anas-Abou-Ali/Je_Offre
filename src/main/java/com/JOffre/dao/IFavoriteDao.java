@@ -8,6 +8,7 @@ public interface IFavoriteDao {
     Offre create(String idUser, Offre offer) throws DaoException;
     List<Offre> get(String idUser) throws DaoException;
     void delete(String idUser, Long offerId) throws DaoException;
+    void deleteOfferEntries(Long offerId) throws DaoException;
 
     List<Offre> getMyOffers(String idUser) throws DaoException;
 

@@ -21,7 +21,7 @@
                 <div class="preview-pic tab-content">
                     <div class="tab-pane active" id="pic-1">
                         <c:if test="${!empty offer.photos}">
-                            <img src="uploads/${offer.photos[0].getPathToImage()}" />
+                            <img src="uploads/${offer.photos[0].getPathToImage()}" class="w-100"/>
                         </c:if>
                     </div>
                 </div>

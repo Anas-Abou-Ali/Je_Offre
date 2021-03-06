@@ -18,7 +18,8 @@ public class FavoriteDaoImpl implements IFavoriteDao {
     private static final String SQL_SELECT          = "SELECT off.offerId, off.idUser, off.title, off.description, off.date, off.city, off.category from favoritize fav join offer off on off.offerId = fav.offerId where fav.idUser = ? ";
     private static final String SQL_SELECT_MYOFFERS = "SELECT offerId, idUser, title, description, date, city, category from offer where idUser = ? ";
 
-    private static final String SQL_DELETE = "DELETE from favoritize where offerId = ? and idUser = ? ";
+    private static final String SQL_DELETE          = "DELETE from favoritize where offerId = ? and idUser = ? ";
+    private static final String SQL_DELETE_ENTRIES  = "DELETE from favoritize where offerId = ? ";
 
 
 
@@ -114,6 +115,25 @@ public class FavoriteDaoImpl implements IFavoriteDao {
             int status = preparedStatement.executeUpdate();
             if ( status == 0 ) {
                 throw new DaoException( "cannot delete a favorite" );
+            }
+
+        } catch(SQLException e){
+            throw new DaoException(e);
+        }
+        finally {
+            closeResources(preparedStatement, connection );
+        }
+    }
+
+    @Override
+    public void deleteOfferEntries(Long offerId) throws DaoException {
+        try {
+            connection = daoFactory.getConnection();
+            preparedStatement = initPreparedStatement( connection, SQL_DELETE_ENTRIES, false, offerId);
+
+            int status = preparedStatement.executeUpdate();
+            if ( status == 0 ) {
+                throw new DaoException( "cannot delete favorite entries" );
             }
 
         } catch(SQLException e){
