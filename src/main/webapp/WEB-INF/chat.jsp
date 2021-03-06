@@ -10,7 +10,7 @@
         <div class="direct-chat-messages">
                 <c:forEach items="${chat}" var="message" >
                     <c:choose>
-                        <c:when test="${message.senderId != sessionScope.user.idUser}">
+                        <c:when test="${message.senderId == sessionScope.user.idUser}">
                             <div class="direct-chat-text send-receive-margin-left">
                                     ${message.message}
                             </div>
