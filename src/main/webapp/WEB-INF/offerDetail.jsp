@@ -44,7 +44,7 @@
                     <i class="fa fa-commenting fa-lg" aria-hidden="true"></i>
                 </button>
                 <div class="action" style="margin-top: 10px;">
-                    <button class="add-to-cart btn btn-default" type="button">ajouter à ma liste de suivi</button>
+                    <a class="add-to-cart btn btn-default"  type="button" href="rem?afav=${offer.offerId}">ajouter à ma liste de suivi</a>
                     <button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>
                 </div>
             </div>

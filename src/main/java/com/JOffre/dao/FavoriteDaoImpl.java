@@ -32,11 +32,11 @@ public class FavoriteDaoImpl implements IFavoriteDao {
     }
 
     @Override
-    public Offre create(String idUser, Offre offer) throws DaoException {
+    public Boolean create(String idUser, Long offerId) throws DaoException {
         ResultSet generatedValues = null;
         try {
             connection = daoFactory.getConnection();
-            preparedStatement = initPreparedStatement( connection, SQL_INSERT, true, offer.getOfferId(), idUser );
+            preparedStatement = initPreparedStatement( connection, SQL_INSERT, true, offerId, idUser );
 
             int status = preparedStatement.executeUpdate();
             if ( status == 0 ) {
@@ -44,12 +44,12 @@ public class FavoriteDaoImpl implements IFavoriteDao {
             }
 
             //recuperation de l'id
-            generatedValues = preparedStatement.getGeneratedKeys();
-            if ( generatedValues.next() ) {
-                 generatedValues.getLong( 1 );
-            } else {
-                throw new DaoException("failed to create a favorite");
-            }
+//            generatedValues = preparedStatement.getGeneratedKeys();
+//            if ( generatedValues.next() ) {
+//                 generatedValues.getLong( 1 );
+//            } else {
+//                throw new DaoException("failed to create a favorite");
+//            }
         } catch(SQLException e){
             throw new DaoException(e);
         }
@@ -57,7 +57,7 @@ public class FavoriteDaoImpl implements IFavoriteDao {
             closeResources( generatedValues, preparedStatement, connection );
         }
 
-        return offer;
+        return true;
     }
 
     @Override

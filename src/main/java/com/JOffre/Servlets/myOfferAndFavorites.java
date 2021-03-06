@@ -14,7 +14,7 @@ import java.util.List;
 
 
 @WebServlet(value = "/rem")
-public class DeletingServlet extends HttpServlet {
+public class myOfferAndFavorites extends HttpServlet {
     private static final String VIEW_RETURN      = "/index.jsp";
     private static final String VIEW_PROFILE     = "/profile";
     private static final String ATT_DAO_FACTORY  = "daofactory";
@@ -22,6 +22,7 @@ public class DeletingServlet extends HttpServlet {
 
 
     private static final String GET_REMOVE_FAV       = "fav";
+    private static final String GET_ADD_FAV          = "afav";
     private static final String GET_REMOVE_MY_OFFER  = "my";
 
     private IOffreDao offers = null;
@@ -42,15 +43,20 @@ public class DeletingServlet extends HttpServlet {
         //getting user from the session
         User user = (User) request.getSession().getAttribute( ATT_SESSION_USER );
 
-        String favoriteId = request.getParameter( GET_REMOVE_FAV );
-        String myOfferId = request.getParameter( GET_REMOVE_MY_OFFER );
+        String favoriteId       = request.getParameter( GET_REMOVE_FAV );
+        String myOfferId        = request.getParameter( GET_REMOVE_MY_OFFER );
+        String favoriteIdCreate = request.getParameter( GET_ADD_FAV );
 
         //deleting offer
-        if(favoriteId != null && favoriteId.trim().length() != 0 && user != null){
+        if(favoriteId != null && favoriteId.trim().length() != 0 && user != null) {
             //case of a favorite we delete just link between this user and the offer
-            favorites.delete(user.getIdUser(), Long.parseLong( favoriteId ));
+            favorites.delete(user.getIdUser(), Long.parseLong(favoriteId));
 
-            response.sendRedirect( request.getContextPath() + VIEW_PROFILE );
+            response.sendRedirect(request.getContextPath() + VIEW_PROFILE);
+        }else if(favoriteIdCreate != null && favoriteIdCreate.trim().length() != 0 && user != null){
+            //adding current offer to user's favorite
+            favorites.create(user.getIdUser(), Long.parseLong( favoriteIdCreate ));
+
         }else if(myOfferId != null && myOfferId.trim().length() != 0 && user != null){
             //case my offer: We delete images of the offer, favorites entries (links to people who liked the offer ) and then delete the offer
             Offre offer = this.offers.get( Long.parseLong( myOfferId ));
