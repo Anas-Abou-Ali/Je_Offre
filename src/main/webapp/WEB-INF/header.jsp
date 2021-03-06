@@ -35,16 +35,16 @@
     </nav>
 </header>
 <!-- Modal -->
-<div class="modal fade" id="connexion" tabindex="-1" role="dialog" aria-labelledby="connexionLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
+<div class="modal fade" id="connexion" tabindex="-1" role="dialog" aria-labelledby="connexionLabel" aria-hidden="true" >
+    <div class="modal-dialog modal-dialog-centered" role="document" >
+        <div class="modal-content" >
+            <div class="modal-header" style="background-color: #fafafa;">
                 <h5 class="modal-title" id="exampleModalLabel">Authentification</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body text-center">
                     <div id="fb-root"></div>
                     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v9.0&appId=266620018232985&autoLogAppEvents=1" nonce="Z43c2Xq9"></script>
                     <script src="js/Oauth2.js"></script>
@@ -52,9 +52,9 @@
                          data-auto-logout-link="false" data-use-continue-as="true" onLogin="checkLoginState()"></div>
                          <p> <span id="name"></span> </p>
                 <form method="POST" action="login">
-                    <input type="text" id="username" name="username"  />
-                    <input type="text" id="idUser" name="idUser"  />
-                    <button type="submit button" class="btn btn-primary">Continuer...</button>
+                    <input type="hidden" id="username" name="username"  />
+                    <input type="hidden" id="idUser" name="idUser"  />
+                    <button type="submit button" class="btn btn-default btn-circle btn-outline" >Continuer...</button>
                 </form>
             </div>
         </div>

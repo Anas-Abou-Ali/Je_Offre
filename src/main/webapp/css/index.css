@@ -23,6 +23,9 @@ body{
     text-transform: capitalize;
     height: calc(3rem + 2px) !important;
     border-radius:0;
+    color: #fff;
+    background-color: darkorange;
+    border-color: darkorange;
 }
 
 .card {
