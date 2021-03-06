@@ -43,11 +43,11 @@ public class MessageDaoImpl implements IMessageDao {
 
             //recuperation de l'id
             generatedValues = preparedStatement.getGeneratedKeys();
-            if ( generatedValues.next() ) {
-                message.setMessageId( generatedValues.getLong( "idUser" ) );
-            } else {
-                throw new DaoException("failed to create a message, no id was generated");
-            }
+//            if ( generatedValues.next() ) {
+//                message.setMessageId( generatedValues.getLong( "sender_id_user" ) );
+//            } else {
+//                throw new DaoException("failed to create a message, no id was generated");
+//            }
         } catch(SQLException e){
             throw new DaoException(e);
         }

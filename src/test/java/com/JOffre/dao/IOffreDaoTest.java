@@ -8,7 +8,6 @@ import java.time.Duration;
 import java.time.Instant;
 
 
-import static com.JOffre.daoUtil.Util.closeResources;
 import static org.junit.jupiter.api.Assertions.*;
 
 class IOffreDaoTest {
