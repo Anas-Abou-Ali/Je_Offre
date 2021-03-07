@@ -33,7 +33,7 @@ Now you can access the application using
 For runing the application in a Docker container after installing Docker engine for more info about how to install Docker engine check this https://docs.docker.com/engine/install/:  
 * ` $ sudo docker build -t <image_name> [project_path]/Je_Offre/`  
 after building  the docker image.  
-* `$ sudo docker run -ti -p 8087:8080 <image_name>`  
+* `$ sudo docker run -ti -p 8087:8080 --name <name_to_the_Container> <image_name>`
 Now you can access the application using
 ### localhost:8087/[war_file_name]/.
   
@@ -47,4 +47,4 @@ For better usability use an IDE.
 * Set the output artifact to web Exploded (recommanded)
 * build and run your application.
 ---
-### For more info contact us in : 
+### For more info contact us at : 
