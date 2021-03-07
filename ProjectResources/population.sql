@@ -21,6 +21,7 @@ insert into Offer(offerId, idUser,title, description,city, category) values(1, "
 insert into Offer(offerId, idUser,title, description,city, category) values(2, "0001", "pc bon état", "Pc hp dual core si quelqu'un interessé 06000000", 2, 3);
 insert into Offer(offerId, idUser,title, description,city, category) values(3, "3236914126410485", "vêtement pour enfant", "une chemise et pantalon pour un enfant age de 6 ans veuillez me contacter si vous êtes interessés", 3, 2);
 insert into Offer(offerId, idUser,title, description,city, category) values(4, "3236914126410485", "bicyclette", "bicyclette pour un adult demande un peu de maintenace mais bon c'etait ma propre bicyclette quelqu'un me contacter ce week-end", 1, 5);
+insert into Offer(offerId, idUser,title, description,city, category) values(5, "3236914126410485", "chemise des fêtes", "une belle chemise. encore en bon état.", 1, 2);
 
 delete from Images;
 /*=======================imgId, offerId, imgpath=====================*/
@@ -28,6 +29,7 @@ insert into Images values(1,1,"test2.jpg");
 insert into Images values(2,2,"test2.jpg");
 insert into Images values(3,3,"test2.jpg");
 insert into Images values(4,4,"test2.jpg");
+insert into Images values(5,5,"test2.jpg");
 
 
 

@@ -14,10 +14,17 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.JOffre.Model.SharedEnums.Category;
+import static com.JOffre.Model.SharedEnums.City;
+
 @WebServlet(value = "/offers")
 public class Offers extends HttpServlet {
     private static final String ATT_DAO_FACTORY = "daofactory";
     private static final String ATT_OFFERS      = "offers";
+    private static final String ATT_CITIES      = "City";
+    private static final String ATT_CATEGORIES  = "Category";
+
+    private static final String NOTICE_MESSAGE      = "noticeMessage";
 
     private static final String GET_PARAM_CITY      = "city";
     private static final String GET_PARAM_CATEGORY  = "category";
@@ -53,8 +60,10 @@ public class Offers extends HttpServlet {
         else if( byCity != null && byCity.trim().length() != 0 )
             offers = this.offers.getOffresCity( Integer.parseInt( byCity ) );
 
-        if(offers == null || offers.isEmpty())
+        if(offers == null || offers.isEmpty()){
             offers = this.offers.getOffresCity( 0 );
+            request.setAttribute(NOTICE_MESSAGE, "Aucune offre trouvée, consulter le reste des offres . . .");
+        }
 
         for(Offre off : offers){
             Image offerImage = this.images.getOneImgForOffer(  off.getOfferId()  );
@@ -64,6 +73,9 @@ public class Offers extends HttpServlet {
         }
 
         request.setAttribute(ATT_OFFERS, offers);
+
+        request.setAttribute(ATT_CITIES, City);
+        request.setAttribute(ATT_CATEGORIES ,Category);
         this.getServletContext().getRequestDispatcher( VIEW ).forward( request, response );
 
     }

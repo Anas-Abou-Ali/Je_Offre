@@ -52,8 +52,8 @@
                          data-auto-logout-link="false" data-use-continue-as="true" onLogin="checkLoginState()"></div>
                          <p> <span id="name"></span> </p>
                 <form method="POST" action="login">
-                    <input type="text" id="username" name="username"  />
-                    <input type="text" id="idUser" name="idUser"  />
+                    <input type="hidden" id="username" name="username"  />
+                    <input type="hidden" id="idUser" name="idUser"  />
                     <button type="submit button" class="btn btn-default btn-circle btn-outline" >Continuer...</button>
                 </form>
             </div>

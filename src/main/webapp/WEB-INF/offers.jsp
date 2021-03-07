@@ -10,6 +10,11 @@
                 <main>
                     <div class="container my-5">
                         <div class="row">
+                            <div class="offset-1">${noticeMessage}</div>
+                            <span class="border-top"></span>
+                        </div>
+
+                        <div class="row">
                             <div class="col-md-1"></div>
                             <div class="col-md-7">
                                 <c:forEach var="offer" items="${offers}" varStatus="status">
@@ -18,13 +23,12 @@
                                         <div class="card">
                                             <div class="card-body">
                                                 <div class="container">
-                                                    <!--auteur -->
+                                                    <!--Title -->
                                                     <div class="row">
                                                         <div class="col-md-8">
                                                             <div class="d-flex story">
-<%--                                                                <img href="/Anas_Abou_Ali" src="logo_don.jpg" class="rounded-circle" width="40" height="40" alt="Avatar"/>--%>
                                                                 <div class="md-2">
-                                                                    <a href="offer?off=${offer.offerId}">
+                                                                    <a href="offer?off=${offer.offerId}" >
                                                                         <strong class="mt-5 ml-2">${offer.titre}</strong>
                                                                     </a>
                                                                 </div>
@@ -46,49 +50,18 @@
                                             <!-- Interactions -->
                                             <div  class="card-body">
                                                 <div class="container">
-                                                    <div class="row">
-                                                        <div class="col-md-8">
-                                                            <i class="fa fa-heart fa-lg ml-0"></i>
-                                                            <i class="fa fa-heart fa-lg ml-0"></i>
-                                                        </div>
-                                                        <div class="col-md-4 text-right">
-                                                            <i class="fa fa-paper-plane fa-lg"></i>
-                                                        </div>
-                                                    </div>
-                                                    <!-- Liked by -->
-<%--                                                    <div class="row">--%>
-<%--                                                        <div class="col-md-8 mt-1">--%>
-<%--                                                            <img href="/Anas_Abou_Ali" src="logo_don.jpg" class="rounded-circle" width="20" height="20" alt="Avatar"/>--%>
-<%--                                                            <small>Aimee par <strong>4232 </strong>people</small>--%>
-<%--                                                        </div>--%>
-<%--                                                    </div>--%>
                                                     <!-- Description -->
                                                     <div class="row">
-                                                        <div class="col-md-12 mt-1">
-                                                            <p>
-                                                                <strong class="text-dark">
-                                                                    Description :
-                                                                </strong> <c:out value="${offer.description}"/>
-                                                            </p>
+                                                        <div class="col-md-12">
+                                                            <p><c:out value="${offer.description}"/></p>
+                                                            <div class="d-flex justify-content-between mt-5">
+                                                                <i class="fa fa-clock-o" aria-hidden="true">  <fmt:formatDate value="${offer.date}" pattern="dd/MM/yyyy HH:mm"/></i>
+                                                                <span style="margin-left: 20%;"></span>
+                                                                <i class="fa fa-street-view" aria-hidden="true"> ${City[offer.city]} </i>
+                                                                <i class="fa fa-tag" aria-hidden="true"> ${Category[offer.category]} </i>
+                                                            </div>
                                                         </div>
-
                                                     </div>
-<%--                                                    <!-- Comments -->--%>
-<%--                                                    <div class="row">--%>
-<%--                                                        <!-- Visualisee tout les comentaire -->--%>
-<%--                                                    </div>--%>
-<%--                                                    <!-- Ajouter un commentair -->--%>
-<%--                                                    <hr />--%>
-<%--                                                    <div class="row mt-2">--%>
-<%--                                                        <div class="col-md-11">--%>
-<%--                                                            <div class="form-outline">--%>
-<%--                                                                <input type="text" id="form1" class="form-control" placeholder="Ajouter un commentaire" />--%>
-<%--                                                            </div>--%>
-<%--                                                        </div>--%>
-<%--                                                        <div class="col-md-1">--%>
-<%--                                                            <p class="text-info mt-1">Publier</p>--%>
-<%--                                                        </div>--%>
-<%--                                                    </div>--%>
                                                 </div>
                                             </div>
                                         </div>
@@ -97,9 +70,9 @@
                                 </c:forEach>
                             </div>
                             <div class="col-md-2 mt-40">
-                                <table width="275"  border="3" cellpadding="3" bordercolor="darkorange">
-                                    <td><div align="center"></div></td>
-                                </table>
+<%--                                <table width="275"  border="3" cellpadding="3" bordercolor="darkorange">--%>
+<%--                                    <td><div align="center"></div></td>--%>
+<%--                                </table>--%>
                             </div>
                         </div>
                     </div>

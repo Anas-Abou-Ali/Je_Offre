@@ -13,16 +13,16 @@ import java.util.List;
 public class OffreDaoImpl implements IOffreDao{
 
     private static final String SQL_INSERT = "INSERT INTO offer(idUser, title, description, city, category) VALUES(?,?,?,?,?)";
-    private static final String SQL_SELECT = "SELECT offerId, offer.idUser, title, description, date, city, category, firstName, lastName from offer JOIN user on user.idUser = offer.idUser where offerId = ?";
+    private static final String SQL_SELECT = "SELECT offerId, offer.idUser, title, description, date, city, category, firstName, lastName from offer JOIN user on user.idUser = offer.idUser where offerId = ? ";
     private static final String SQL_UPDATE = "UPDATE offer set title  = ?, description = ?, city = ?, category = ?  where offerId = ? ";
     private static final String SQL_DELETE = "DELETE from offer where offerId = ? ";
 
-    private static final String SQL_SELECT_BY_CITY          = "SELECT offerId, idUser, title, description, date, city, category from offer where city = ? ";
-    private static final String SQL_SELECT_ALLCITIES        = "SELECT offerId, idUser, title, description, date, city, category from offer";
-    private static final String SQL_SELECT_BY_CATEGORY      = "SELECT offerId, idUser, title, description, date, city, category from offer where category = ? ";
-    private static final String SQL_SELECT_ALLCATEGORIES    = "SELECT offerId, idUser, title, description, date, city, category from offer ";
-    private static final String SQL_SELECT_BY_CITY_CATEGORY = "SELECT offerId, idUser, title, description, date, city, category from offer where city = ? and category = ?";
-    private static final String SQL_SELECT_BY_SEARCH        = "SELECT offerId, idUser, title, description, date, city, category from offer where title LIKE ? ESCAPE '!'";
+    private static final String SQL_SELECT_BY_CITY          = "SELECT offerId, idUser, title, description, date, city, category from offer where city = ? order by date desc limit 50";
+    private static final String SQL_SELECT_ALLCITIES        = "SELECT offerId, idUser, title, description, date, city, category from offer order by date desc limit 50";
+    private static final String SQL_SELECT_BY_CATEGORY      = "SELECT offerId, idUser, title, description, date, city, category from offer where category = ? order by date desc limit 50";
+    private static final String SQL_SELECT_ALLCATEGORIES    = "SELECT offerId, idUser, title, description, date, city, category from offer order by date desc limit 50";
+    private static final String SQL_SELECT_BY_CITY_CATEGORY = "SELECT offerId, idUser, title, description, date, city, category from offer where city = ? and category = ? order by date desc limit 50";
+    private static final String SQL_SELECT_BY_SEARCH        = "SELECT offerId, idUser, title, description, date, city, category from offer where title LIKE ? ESCAPE '!' order by date desc limit 50";
 
 
     private DaoFactory       daoFactory;
