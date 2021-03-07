@@ -1,9 +1,8 @@
 # J'Offre.ma
-
 ---
 # Introduction 
 
-####J'offre.ma is a web application build to help people and to help reduce waste (electronic, fournitures, Paper...), and other items that can harm the envirement while other people may be in need of.  
+### J'offre.ma is a web application build to help people and to help reduce waste (electronic, fournitures, Paper...), and other items that can harm the envirement while other people may be in need of.  
 this application offers every type of aide items:  
 * Electronics
 * Household appliances
@@ -48,4 +47,4 @@ For better usability use an IDE.
 * Set the output artifact to web Exploded (recommanded)
 * build and run your application.
 ---
-###For more info contact us in : 
+### For more info contact us in : 
