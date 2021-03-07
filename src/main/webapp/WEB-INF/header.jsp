@@ -6,13 +6,14 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item" style="margin-right:30px;">
-                    <a class="nav-link" href="upload"><i class="fa fa-plus" aria-hidden="true"></i> Proposer un offre </a>
-                </li>
-                <li class="nav-item">
-                </li>
+
                 <c:choose>
                     <c:when test="${ !empty sessionScope.user }">
+                        <li class="nav-item" style="margin-right:30px;">
+                            <a class="nav-link" href="upload"><i class="fa fa-plus" aria-hidden="true"></i> Proposer un offre </a>
+                        </li>
+                        <li class="nav-item">
+                        </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fa fa-user" aria-hidden="true">  <c:out value="${sessionScope.user.firstName}" /> </i>
