@@ -37,6 +37,14 @@ after building  the docker image.
 Now you can access the application using
 ### localhost:8087/[war_file_name]/.
   
+# Run an already built image (pull from Docker Hub)
+pull image from Docker Hub registry:
+* ` $ sudo docker pull kingridda/joffrejee`  
+run the the docker image:
+* `$ sudo docker run -ti -p 8087:8080 --name <name_to_the_Container> kingridda/joffrejee`
+Now you can access the application on:
+### localhost:8087/Offre-1.0-SNAPSHOT/
+
 ---
 # Source code
 To build this project you can download the source code up in the repo using the command:  
