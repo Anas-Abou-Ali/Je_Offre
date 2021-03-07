@@ -55,4 +55,4 @@ For better usability use an IDE.
 * Set the output artifact to web Exploded (recommanded)
 * build and run your application.
 ---
-### For more info contact us at : 
+### For more info contact us at : anasabouali99@gmail.com
