@@ -36,7 +36,8 @@ after building  the docker image.
 * `$ sudo docker run -ti -p 8087:8080 --name <name_to_the_Container> <image_name>`
 Now you can access the application using
 ### localhost:8087/[war_file_name]/.
-  
+ 
+ ---
 # Run an already built image (pull from Docker Hub)
 pull image from Docker Hub registry:
 * ` $ sudo docker pull kingridda/joffrejee`  
