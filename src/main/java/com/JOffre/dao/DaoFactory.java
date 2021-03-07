@@ -16,6 +16,7 @@ public class DaoFactory {
     private static final String PROPERTY_USERNAME    = "DBUSER";
     private static final String PROPERTY_PASSWORD    = "DBPASSWORD";
 
+//    private String DBUrl = "jdbc:mysql://host.docker.internal:3306/Joffre";
     private String DBUrl = "jdbc:mysql://localhost:3306/Joffre";
     private String DBUser = "administrateur";
     private String DBPassword = "administrateur";
@@ -41,6 +42,7 @@ public class DaoFactory {
 
 //        try {
 //            properties.load(propertiesFile);
+//        url = "jdbc:mysql://host.docker.internal/Joffre";
         url = "jdbc:mysql://localhost/Joffre";
         driver = "com.mysql.jdbc.Driver";
         username =  "administrateur";
