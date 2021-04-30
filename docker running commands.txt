@@ -1,5 +1,0 @@
-docker build -t kingridda/joffrejee .
-
-docker run -ti -p 8087:8080 --name JoffreJEETomcat9Container kingridda/joffrejee
-
-Link to the app at: http://localhost:8087/Offre-1.0-SNAPSHOT/
