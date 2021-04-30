@@ -44,7 +44,14 @@ pull image from Docker Hub registry:
 run the the docker image:
 * `$ sudo docker run -ti -p 8087:8080 --name <name_to_the_Container> kingridda/joffrejee`
 Now you can access the application on:
-### localhost:8087/Offre-1.0-SNAPSHOT/
+get to the app at: `localhost:8087/Offre-1.0-SNAPSHOT/`
+
+# Or Run Using docker-compose
+commands: 
+1. docker-compose up
+1. docker-compose down
+
+get to the app at: `localhost:8087/Offre-1.0-SNAPSHOT/`
 
 ---
 # Source code
