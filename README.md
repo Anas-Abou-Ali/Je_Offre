@@ -56,4 +56,17 @@ For better usability use an IDE.
 * Set the output artifact to web Exploded (recommanded)
 * build and run your application.
 ---
+
+# Screenshots:
+
+![alt text](/screenshots/Joffre.jpg)
+
+![alt text](/screenshots/login.jpeg)
+
+![alt text](/screenshots/offre.png)
+
+![alt text](/screenshots/profile1.png)
+
+
+
 ### For more info contact us at : anasabouali99@gmail.com or ridda.abdelghani@gmail.com
